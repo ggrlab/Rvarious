@@ -1,0 +1,14 @@
+Package: Rvarious
+Type: Package
+Title: Various R functions gathered
+Version: 0.1.0
+Author: Gunther Glehr
+Maintainer: Gunther Glehr <gunther.glehr@gmx.de>
+Description: Functions which are already done:
+    vector.allcomb(): All possible unique combinations using a specific function for a given vector
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    magrittr
