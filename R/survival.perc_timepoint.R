@@ -22,20 +22,14 @@
 #' abline(h = tmp$surv.closest.lower.time, lty=2, col="red")
 #' abline(v = tmp$closest.lower.time, lty=2, col="green")
 #' abline(v = 10, lty=2, col="blue")
-#'
-#'
-survival.perc_timepoint <- function(survfit.obj, timepoint=10){
-	a <- summary(survfit.obj)
-	tmp.df <- data.frame(time=a$time, strata=a$strata, surv=a$surv)
-	# add a "0" timepoint (before everything what happened anytime, so -Inf)
-	for(strataX in unique(tmp.df$strata)){
-		tmp.df <- dplyr::add_row(tmp.df, time=-Inf, strata=strataX, surv=1)
-	}
-	tmp.df <- tmp.df %>% dplyr::arrange(strata, time)
-	closest <- tmp.df %>%
-		dplyr::filter(time <= timepoint) %>%
-		dplyr::group_by(strata) %>%
-		dplyr::summarise(surv.closest.lower.time = surv[which.max(time)]
-				  ,closest.lower.time = max(time))
-	return(closest)
+
+survival.perc_timepoint <- function(survfit.obj, timepoint=10, conf.int=0.95){
+	if(conf.int != 0.95)
+		stop("To change the confidence interval you have to change it in survfit.obj. See ?survival::survfitKM")
+	a <- summary(survfit.obj, time=timepoint)
+	tmp.df <- data.frame("time"=a$time, "strata"=a$strata, "surv"=a$surv
+						 , "std.err"=a$std.err, "lowerCI"=a$lower, "upperCI"=a$upper)
+	tmp.df$CI <- conf.int
+	tmp.df$conf.type <- a$conf.type
+	return(tmp.df)
 }
