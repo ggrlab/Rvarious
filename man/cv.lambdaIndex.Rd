@@ -10,6 +10,8 @@ cv.lambdaIndex(fit, s, fit.lambda.name = "lambdas",
 \arguments{
 \item{fit}{A cv-model fit}
 
+\item{s}{lambda-value, usually "lambda.1se" or "lambda.min"}
+
 \item{fit.lambda.name}{The name of the model's lambda-sequence}
 
 \item{fit.lambda.error.name}{The name of the model's mean error related to the lambda-sequence}
@@ -40,14 +42,9 @@ ly=rbinom(n=length(px),prob=px,size=1)
 set.seed(1011)
 cvob1=cv.glmnet(x,y)
 # glmnet
-cv.lambdaIndex(fit = cvob1
-			   , s="lambda.min"
-			   ,fit.lambda.name = "lambda"
-			   ,fit.lambda.error.name = "cvm"
-			   ,fit.lambda.errorSD.name = "cvsd")
 
 # grpregoverlap:
-library(grpregOverlap)
+if(require(grpregOverlap)){
 ## linear regression, a simulation demo.
 set.seed(123)
 group <- list(gr1 = c(1, 2, 3),
@@ -67,4 +64,5 @@ cv.lambdaIndex(fit = cvfit
 			   ,fit.lambda.name = "lambda"
 			   ,fit.lambda.error.name = "cve"
 			   ,fit.lambda.errorSD.name = "cvse")
+}
 }

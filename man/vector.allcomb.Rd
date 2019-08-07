@@ -11,6 +11,8 @@ vector.allcomb(named.num.vector, combfun = "/", combfun.name, ...)
 
 \item{combfun}{How it should be combined, is overgiven to \code{outer(FUN=combfun)}}
 
+\item{combfun.name}{If the combfun is an (anonymous) function, you have to specify its name in combfun.name}
+
 \item{...}{optional further arguments passed to FUN in the outer call: \code{outer(X, Y, FUN=combfun, ...)}}
 }
 \value{
@@ -32,13 +34,4 @@ complex_function <- function(x, y){
 	x**y
 }
 vector.allcomb(1:10, combfun = complex_function, combfun.name = "complex")
-exprs(miR_Ros.set)[1:3, 1]
-a <- outer(exprs(miR_Ros.set)[1:3, 1], exprs(miR_Ros.set)[1:3, 1], "/")
-a
-## so I see, it is x-axis-gene / y-axis-gene
-a[upper.tri(a, diag=TRUE)] <- NA
-b <- na.omit(reshape2::melt(a))
-b
-## so it is Var1/Var2
-
 }

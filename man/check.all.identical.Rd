@@ -4,10 +4,12 @@
 \alias{check.all.identical}
 \title{Check if all elements are identical}
 \usage{
-check.all.identical(..., func = function(x) {     x })
+check.all.identical(..., x = NULL, func = function(x) {     x })
 }
 \arguments{
-\item{...}{}
+\item{...}{A given list or additional parameters}
+
+\item{x}{A given list or the first to be appended to ...}
 
 \item{func}{The function applied to all elements of "..."}
 }
@@ -25,4 +27,7 @@ TRUE if all elements in "..." are after application of func identical.
 check.all.identical(1, 1, "a", 1)
 check.all.identical(1, 1, 1, 1)
 check.all.identical("a", "a", "a", "a")
+check.all.identical("a", "a", "a")
+check.all.identical(list("a", "a", "a"))
+check.all.identical(list("a", "a", "a"), "a")
 }

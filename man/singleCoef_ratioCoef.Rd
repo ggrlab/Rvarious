@@ -2,15 +2,21 @@
 % Please edit documentation in R/singleCoef_ratioCoef.R
 \name{singleCoef_ratioCoef}
 \alias{singleCoef_ratioCoef}
-\title{Title}
+\title{Get single coefficients from ratio signature}
 \usage{
 singleCoef_ratioCoef(named.ratio_coefmat, splitchar = "_/_")
 }
 \arguments{
-\item{splitchar}{}
+\item{named.ratio_coefmat}{A ratio coefficient matrix with rownames}
+
+\item{splitchar}{How should the ratio-coefficient rownames be splitted}
+}
+\value{
+A matrix with the single coefficients as rownames and the coefficients as values
+in the first column
 }
 \description{
-Title
+Get single coefficients from ratio signature
 }
 \examples{
 ratio.signature <- c("longname.b_/_longname.a"=1, "longname.c_/_longname.b"=-1)

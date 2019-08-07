@@ -4,12 +4,17 @@
 \alias{survival.perc_timepoint}
 \title{Survival percentage at timepoint}
 \usage{
-survival.perc_timepoint(survfit.obj, timepoint = 10)
+survival.perc_timepoint(survfit.obj, timepoint = 10, conf.int = 0.95,
+  ret.pvals = TRUE)
 }
 \arguments{
 \item{survfit.obj}{An object returned by survival::survfit()}
 
 \item{timepoint}{Which timepoint do you want to look at?}
+
+\item{conf.int}{What should the confidence interval be (in real numbers)}
+
+\item{ret.pvals}{Binary, return the p-values?}
 }
 \value{
 tibble
@@ -25,9 +30,7 @@ leukemia.surv <- survfit(Surv(time, status) ~ x, data = aml)
 tmp <- survival.perc_timepoint(leukemia.surv, 10)
 print(tmp)
 plot(leukemia.surv)
-abline(h = tmp$surv.closest.lower.time, lty=2, col="red")
-abline(v = tmp$closest.lower.time, lty=2, col="green")
+abline(h = tmp$survestimates[1, "surv"], lty=4, col="red")
+abline(v = tmp$survestimates[1, "time"], lty=4, col="green")
 abline(v = 10, lty=2, col="blue")
-
-
 }
