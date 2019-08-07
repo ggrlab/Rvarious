@@ -1,9 +1,13 @@
-#' Title
+#' Get single coefficients from ratio signature
 #'
 #' @param named.ratio_coefmat
+#' A ratio coefficient matrix with rownames
 #' @param splitchar
+#' How should the ratio-coefficient rownames be splitted
 #'
 #' @return
+#' A matrix with the single coefficients as rownames and the coefficients as values
+#' in the first column
 #' @export
 #'
 #' @examples

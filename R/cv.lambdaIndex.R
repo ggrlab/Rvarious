@@ -5,6 +5,7 @@
 #' @param fit
 #' A cv-model fit
 #' @param s
+#' lambda-value, usually "lambda.1se" or "lambda.min"
 #' @param fit.lambda.name
 #' The name of the model's lambda-sequence
 #' @param fit.lambda.error.name
@@ -34,14 +35,14 @@
 #' set.seed(1011)
 #' cvob1=cv.glmnet(x,y)
 #' # glmnet
-#' cv.lambdaIndex(fit = cvob1
-#' 			   , s="lambda.min"
-#' 			   ,fit.lambda.name = "lambda"
-#' 			   ,fit.lambda.error.name = "cvm"
-#' 			   ,fit.lambda.errorSD.name = "cvsd")
+# cv.lambdaIndex(fit = cvob1
+# 			   , s="lambda.min"
+# 			   ,fit.lambda.name = "lambda"
+# 			   ,fit.lambda.error.name = "cvm"
+# 			   ,fit.lambda.errorSD.name = "cvsd")
 #'
 #' # grpregoverlap:
-#' library(grpregOverlap)
+#' if(require(grpregOverlap)){
 #' ## linear regression, a simulation demo.
 #' set.seed(123)
 #' group <- list(gr1 = c(1, 2, 3),
@@ -61,6 +62,8 @@
 #' 			   ,fit.lambda.name = "lambda"
 #' 			   ,fit.lambda.error.name = "cve"
 #' 			   ,fit.lambda.errorSD.name = "cvse")
+#' }
+
 
 
 cv.lambdaIndex <- function(fit, s

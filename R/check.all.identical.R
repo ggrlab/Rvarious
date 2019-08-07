@@ -9,7 +9,9 @@
 #' @param func
 #' The function applied to all elements of "..."
 #' @param ...
-#'
+#' A given list or additional parameters
+#' @param x
+#' A given list or the first to be appended to ...
 #'
 #' @return
 #' TRUE if all elements in "..." are after application of func identical.
@@ -20,9 +22,16 @@
 #' check.all.identical(1, 1, "a", 1)
 #' check.all.identical(1, 1, 1, 1)
 #' check.all.identical("a", "a", "a", "a")
-check.all.identical <- function(..., func=function(x){x}){
+#' check.all.identical("a", "a", "a")
+#' check.all.identical(list("a", "a", "a"))
+#' check.all.identical(list("a", "a", "a"), "a")
+check.all.identical <- function(..., x=NULL, func=function(x){x}){
 	tmplist <- list(...)
-	# are.all.identical <- TRUE
+	if(length(tmplist) == 0){
+		tmplist <- x
+	}else{
+		tmplist <- c(x, tmplist)
+	}
 	if(length(tmplist) < 2){
 		warning("Less than 2 elements in ..., they are of course all the same")
 	}else{
@@ -36,5 +45,4 @@ check.all.identical <- function(..., func=function(x){x}){
 		}
 	}
 	return(TRUE)
-	# return(are.all.identical)
 }

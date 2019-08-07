@@ -1,10 +1,18 @@
-
 #' Apply a feature signature on a matrix
 #'
-#' @param count.mat Matrix with cols=Samples and rows=features
-#' @param genesig named numeric vector, Coefficients for a subset of features from count.mat
+#' @param count.mat
+#' Matrix with cols=Samples and rows=features
+#' @param genesig
+#' named numeric vector, Coefficients for a subset of features from count.mat
 #' If a matrix is given,
-#' @param interceptindex If present, the index of the intercept in genesig
+#' @param interceptindex
+#' If present, the index of the intercept in genesig
+#' @param genesig.matrix.colN
+#' If the given genesig is a matrix, which column should be taken
+#' @param genesig.data.frame.cols_names
+#' If the given genesig is a data frame, which column is the signature-feature-names
+#' @param genesig.data.frame.cols_coefs
+#' If the given genesig is a data frame, which column holds the signature-coefficients
 #'
 #' @return response named numeric vector, Holds the response for each sample
 #' @export
