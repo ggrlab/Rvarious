@@ -5,7 +5,9 @@
 \title{Plotting an "ratio"-plot}
 \usage{
 plot_ratio_2d_score(range.x, range.y, n.points.x, n.points.y,
-  coefs = c(minus = 1, plus = 1), additional.points, cutoff.x, cutoff.y)
+  coefs = c(minus = 1, plus = 1), titles = c(minus = "", plus = "",
+  total = ""), additional.points, cutoff.x, cutoff.y, interpolate = TRUE,
+  standardize.plot.color = FALSE, additional.points_color.values = NA)
 }
 \arguments{
 \item{range.x}{Range of x axis}
@@ -20,11 +22,16 @@ The final grid will have n.points.x * n.points.y points!}
 
 \item{coefs}{The coefficients, length == 3}
 
+\item{titles}{Named character vector c("minus"="", "plus"="", "total"="")
+With the titles of the respective plot.}
+
 \item{additional.points}{[Optional] additional points which will be plotted on the score-grid}
 
 \item{cutoff.x}{[Optional] Cutoff of the x-axis, check the plots to see the effect.}
 
 \item{cutoff.y}{[Optional] Cutoff of the y-axis, check the plots to see the effect.}
+
+\item{interpolate}{parameter for geom_raster()}
 }
 \value{
 Plots directly

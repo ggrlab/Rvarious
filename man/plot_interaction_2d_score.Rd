@@ -5,8 +5,11 @@
 \title{Plotting an interaction plot}
 \usage{
 plot_interaction_2d_score(range.x, range.y, n.points.x, n.points.y,
-  coefs = c(x = 1, y = 1, interaction = 0.5), additional.points,
-  cutoff.x, cutoff.y)
+  coefs = c(x = 1, y = 1, interaction = 0.5), titles = c(x = "", y =
+  "", interaction = "Main plot title", total = ""), additional.points,
+  cutoff.x, cutoff.y, interpolate = TRUE,
+  standardize.plot.color = FALSE, additional.points_color.values = NA,
+  discrete.range = c("onlyValues", "onlyRect", "always"))
 }
 \arguments{
 \item{range.x}{Range of x axis}
@@ -21,11 +24,16 @@ The final grid will have n.points.x * n.points.y points!}
 
 \item{coefs}{The coefficients, length == 3}
 
+\item{titles}{Named character vector c("x"="", "y"="", "interaction"="Main plot title", "total"="")
+With the titles of the respective plot.}
+
 \item{additional.points}{[Optional] additional points which will be plotted on the score-grid}
 
 \item{cutoff.x}{[Optional] Cutoff of the x-axis, check the plots to see the effect.}
 
 \item{cutoff.y}{[Optional] Cutoff of the y-axis, check the plots to see the effect.}
+
+\item{interpolate}{parameter for geom_raster()}
 }
 \value{
 Plots directly
@@ -50,10 +58,44 @@ plot_interaction_2d_score(range.x = range(testing_points$x)
 					   ,coefs = c(1, 1, -.5)
 					   ,additional.points = testing_points)
 plot_interaction_2d_score(range.x = range(testing_points$x)
-					   ,range.y = range(testing_points$y)
+						  ,range.y = range(testing_points$y)
+						  ,n.points.x = 20
+						  ,coefs = c(1, 1, -.5)
+						  ,additional.points = testing_points
+						  ,cutoff.x = 2, cutoff.y = 1
+)
+plot_interaction_2d_score(range.x = range(testing_points$x)
+						  ,range.y = range(testing_points$y)
+						  ,n.points.x = 20
+						  ,coefs = c(1, 1, -.5)
+						  ,additional.points = testing_points
+						  ,cutoff.x = 2, cutoff.y = 1
+						  ,discrete.range = "always"
+)
+plot_interaction_2d_score(range.x = range(testing_points$x)
+						  ,range.y = range(testing_points$y)
+						  ,n.points.x = 20
+						  ,coefs = c(1, 1, -.5)
+						  ,additional.points = testing_points
+						  ,cutoff.x = 2, cutoff.y = 1
+						  ,discrete.range = "onlyValues"
+)
+
+
+testing_points_withcolor <- expand.grid(x=(-1:5), y=(-1:9))
+testing_points_withcolor$col <- factor(1:7) # use recycling --> seven colors
+plot_interaction_2d_score(range.x = range(testing_points_withcolor$x)
+					   ,range.y = range(testing_points_withcolor$y)
 					   ,n.points.x = 20
 					   ,coefs = c(1, 1, -.5)
-					   ,additional.points = testing_points
-					   ,cutoff.x = 2, cutoff.y = 1
+					   ,additional.points = testing_points_withcolor
+)
+#'
+testing_points_withcolor$col <- factor(1:7) # use recycling --> seven colors
+plot_interaction_2d_score(range.x = range(testing_points_withcolor$x)
+					   ,range.y = range(testing_points_withcolor$y)
+					   ,n.points.x = 20
+					   ,coefs = c(1, 1, -.5)
+					   ,additional.points = testing_points_withcolor
 )
 }
