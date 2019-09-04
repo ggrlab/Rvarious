@@ -86,7 +86,7 @@ cv.lambdaIndex <- function(fit, s
 	}else{
 		lambda.index <- which(fit[[fit.lambda.name]] == s)
 		if(length(lambda.index) == 0)
-			stop("your lambda is not inside the lambdasequence")
+			stop("your lambda is not inside the lambdasequence exactly")
 	}
 	return(lambda.index)
 }

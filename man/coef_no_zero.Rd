@@ -14,6 +14,7 @@ coef_no_zero(x, ...)
 Get coefficients without zeros
 }
 \examples{
+# library(Rvarious)
 set.seed(1010)
 n=1000;p=100
 nzc=trunc(p/10)
@@ -39,14 +40,22 @@ if(require(zeroSum)){
 		print(coef_no_zero(cvob2))
 		print(coef_no_zero(cvob2, s="lambda.min"))
 	}
-#'
-if(require(grpreg)){
-	cvob3 = grpreg::cv.grpreg(x,y)
-	cvob4 = grpreg::grpreg(x,y)
 
-	print(coef_no_zero(cvob3))
-	print(coef_no_zero(cvob3, s="lambda.min"))
-	print(coef_no_zero(cvob4))
- print(coef_no_zero(cvob4, s="lambda.1se"))
+if(require(grpreg)){
+		cvob3 = grpreg::cv.grpreg(x,y)
+		cvob4 = grpreg::grpreg(x,y)
+		Lung <- grpreg::Lung
+		X <- Lung$X
+		y <- Lung$y
+		group <- Lung$group
+
+		cvob5 <- grpreg::cv.grpsurv(X, y, group)
+
+		print(coef_no_zero(cvob3))
+		print(coef_no_zero(cvob3, s="lambda.min"))
+		print(coef_no_zero(cvob4))
+		print(coef_no_zero(cvob4, s="lambda.1se"))
+		print(coef_no_zero(cvob5))
+		print(coef_no_zero(cvob5, s="lambda.1se"))
 }
 }
