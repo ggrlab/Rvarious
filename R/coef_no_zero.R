@@ -77,7 +77,7 @@ coef_no_zero.grpreg <- function(x, ...){
 }
 #' @export
 coef_no_zero.cv.grpreg <- function(x, ...){
-	lambda.index <- unimplemented_s_finding(
+	lambda.index <- cv.lambdaIndex(
 		fit = x
 		,fit.lambda.name = "lambda"
 		,fit.lambda.error.name = "cve"
