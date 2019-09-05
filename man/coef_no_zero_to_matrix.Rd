@@ -7,10 +7,10 @@
 coef_no_zero_to_matrix(coefs)
 }
 \arguments{
-\item{coefs}{}
+\item{coefs}{some coefficients}
 }
 \value{
-
+A matrix with non-zero coefficients
 }
 \description{
 coef_no_zero result to matrix

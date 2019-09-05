@@ -5,7 +5,8 @@
 \title{Get lambdaindex}
 \usage{
 cv.lambdaIndex(fit, s, fit.lambda.name = "lambdas",
-  fit.lambda.error.name = "lldiff", fit.lambda.errorSD.name = "llSD")
+  fit.lambda.error.name = "lldiff", fit.lambda.errorSD.name = "llSD",
+  ...)
 }
 \arguments{
 \item{fit}{A cv-model fit}
@@ -25,8 +26,6 @@ single numeric - index of
 Get the index of the lambda(=s) with a specific name (lambda.1se or lambda.min) or a specific value.
 }
 \examples{
-#'
-
 library(glmnet)
 set.seed(1010)
 n=1000;p=100

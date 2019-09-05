@@ -18,8 +18,6 @@
 #' @export
 #'
 #' @examples
-#' #'
-#'
 #' library(glmnet)
 #' set.seed(1010)
 #' n=1000;p=100
@@ -69,7 +67,8 @@
 cv.lambdaIndex <- function(fit, s
 						   ,fit.lambda.name="lambdas"
 						   ,fit.lambda.error.name="lldiff"
-						   ,fit.lambda.errorSD.name="llSD"){
+						   ,fit.lambda.errorSD.name="llSD"
+						   ,...){
 	get.lambda.1se <- function(loss.mean, loss.sd, lambdas){
 		minimum.index <- which.min(loss.mean)
 		min.plus.sd <- loss.mean[minimum.index] + loss.sd[minimum.index]

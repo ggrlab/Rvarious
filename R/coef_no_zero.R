@@ -5,6 +5,7 @@
 #'     - cv.glmnet
 #'
 #' @return
+#' A matrix with non-zero coefficients
 #' @export
 #'
 #' @examples

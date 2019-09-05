@@ -10,6 +10,9 @@ coef_no_zero(x, ...)
 \item{x}{A model from
 - cv.glmnet}
 }
+\value{
+A matrix with non-zero coefficients
+}
 \description{
 Get coefficients without zeros
 }

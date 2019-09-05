@@ -4,13 +4,16 @@
 \alias{predict_unified}
 \title{Get a unified prediction function}
 \usage{
-predict_unified(fit, newx, s, ...)
+predict_unified(fit, newx, s = "lambda.min", lambda.index, ...)
 }
 \arguments{
-\item{x}{A model from
+\item{x}{Tested: a model from
 - cv.glmnet
 - zeroSum
 - grpreg}
+}
+\value{
+matrix with rows as samples, predictions from the model
 }
 \description{
 Get a unified prediction function
@@ -49,7 +52,7 @@ if(require(grpreg)){
 		cvob4 = grpreg::grpreg(x,y)
 
 		print(head(predict_unified(cvob3,newx = x,  s="lambda.min")))
-		print(head(predict_unified(cvob4,newx = x,  s="lambda.min")))
+		print(head(predict_unified(cvob4,newx = x,  lambda.index=2)))
 
 		Lung <- grpreg::Lung
 		x_surv <- Lung$X
@@ -59,7 +62,7 @@ if(require(grpreg)){
 		cvob5 <- grpreg::cv.grpsurv(x_surv, y_surv, group)
 		cvob6 <- grpreg::grpsurv(x_surv, y_surv, group)
 		print(head(predict_unified(cvob5,newx = x_surv,  s="lambda.min")))
-		print(head(predict_unified(cvob6,newx = x_surv,  s=4)))
+		print(head(predict_unified(cvob6,newx = x_surv,  lambda.index=4)))
 }
 
 
