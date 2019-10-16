@@ -4,11 +4,16 @@
 \alias{coef_no_zero}
 \title{Get coefficients without zeros}
 \usage{
-coef_no_zero(x, ...)
+coef_no_zero(x, s = "lambda.1se", ..., do.sort, do.sort.sortfun,
+  sort.rownames.exceptions)
 }
 \arguments{
 \item{x}{A model from
 - cv.glmnet}
+
+\item{s}{lambda value or "lambda.1se", "lambda.min"}
+
+\item{do.sort}{Should I sort the coefficients?}
 }
 \value{
 A matrix with non-zero coefficients
@@ -35,6 +40,8 @@ if(require(glmnet)){
 		cvob1=glmnet::cv.glmnet(x,y)
 
 		print(coef_no_zero(cvob1))
+		print(coef_no_zero(cvob1, do.sort=TRUE))
+		print(coef_no_zero(cvob1, do.sort=FALSE))
 		print(coef_no_zero(cvob1, s="lambda.min"))
 	}
 if(require(zeroSum)){
@@ -60,5 +67,6 @@ if(require(grpreg)){
 		print(coef_no_zero(cvob4, s="lambda.1se"))
 		print(coef_no_zero(cvob5))
 		print(coef_no_zero(cvob5, s="lambda.1se"))
+		print(coef_no_zero(cvob5, s="lambda.min"))
 }
 }
