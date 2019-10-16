@@ -1,7 +1,7 @@
 Package: Rvarious
 Type: Package
 Title: Various R functions gathered
-Version: 0.1.5
+Version: 0.1.6
 Author: Gunther Glehr
 Maintainer: Gunther Glehr <gunther.glehr@gmx.de>
 Description: Functions which are already done:
