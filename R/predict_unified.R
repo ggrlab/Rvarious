@@ -17,8 +17,8 @@
 #' n=1000;p=100
 #' nzc=trunc(p/10)
 #' x=matrix(rnorm(n*p),n,p)
-#' rownames(x) <- paste0("f", 1:nrow(x))
-#' colnames(x) <- paste0("S", 1:ncol(x))
+#' rownames(x) <- paste0("S", 1:nrow(x))
+#' colnames(x) <- paste0("f", 1:ncol(x))
 #' beta=rnorm(nzc)
 #' fx= x[,seq(nzc)] %*% beta
 #' eps=rnorm(n)*5
