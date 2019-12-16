@@ -1,0 +1,90 @@
+train.res...p:
+  CVstep1:
+    cutoff:
+    - -0.1112537
+    - -0.1112537
+  CVstep2:
+    cutoff:
+    - -1.2888784
+    - -3.0321384
+  CVstep3:
+    cutoff:
+    - 0.5899218
+    - 0.5899218
+  CVstep4:
+    cutoff:
+    - -1.2251295
+    - -2.8220137
+  CVstep5:
+    cutoff:
+    - -1.7074582
+    - -3.8080564
+  CVstep6:
+    cutoff:
+    - 0.367119
+    - 0.367119
+  CVstep7:
+    cutoff:
+    - -0.126039
+    - -0.4391152
+  CVstep8:
+    cutoff:
+    - -1.3587555
+    - -3.4014447
+  CVstep9:
+    cutoff:
+    - 0.4151302
+    - 0.5459702
+  CVstep10:
+    cutoff:
+    - -1.5434931
+    - -3.5200994
+  CVstep11:
+    cutoff:
+    - 0.611082
+    - 0.0310714
+  CVstep12:
+    cutoff:
+    - 0.0210271
+    - 0.0210271
+  CVstep13:
+    cutoff:
+    - 0.3783709
+    - 0.3783709
+  CVstep14:
+    cutoff:
+    - -1.3888039
+    - -3.107564
+  CVstep15:
+    cutoff:
+    - 0.4532732
+    - 0.4532732
+  CVstep16:
+    cutoff:
+    - -1.1081383
+    - -2.573515
+  CVstep17:
+    cutoff:
+    - .na.character
+    - .na.character
+  CVstep18:
+    cutoff:
+    - 0.3815772
+    - 0.152388
+  CVstep19:
+    cutoff:
+    - .na.character
+    - .na.character
+  CVstep20:
+    cutoff:
+    - -1.3425739
+    - -3.1162008
+  CVstep21:
+    cutoff:
+    - -1.0121899
+    - -2.4753743
+  allSamples:
+    cutoff:
+    - -1.4287511
+    - -3.3009532
+
