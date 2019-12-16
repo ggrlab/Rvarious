@@ -67,9 +67,11 @@
 
 
 
-unlist_get_element <- function(mylist, which.element, simplify=TRUE, get.names=FALSE){
+unlist_get_element <- function(mylist, which.element, simplify=TRUE, get.names=FALSE
+							   ,max.depth=Inf){
 	matrix.result <- uge_first_occurence_matrix(mylist = mylist
-												,which.element = which.element)
+												,which.element = which.element
+												,max.depth=max.depth)
 	# print(matrix.result)
 	return(interpret_unlist_get_element(matrix.result[[1]], simplify = simplify
 										,get.names=get.names))
@@ -131,7 +133,11 @@ simplify_results <- function(interpreted.df, get.names=FALSE){
 
 
 # for "unlist_get_element_first_occurence_matrix"
-uge_first_occurence_matrix <- function(mylist, which.element, depth=0){
+uge_first_occurence_matrix <- function(mylist, which.element
+									   , depth=0, max.depth=Inf){
+	not.found.element <- list("element"=NA
+							  , "found_which.element"=FALSE)
+
 	# print(depth)
 	if(which.element %in% names(mylist)){
 		retval <- mylist[[which.element]]
@@ -140,6 +146,8 @@ uge_first_occurence_matrix <- function(mylist, which.element, depth=0){
 		}
 		return(list("element"= retval
 					, "found_which.element"=TRUE))
+	}else if(max.depth < depth){
+		return(not.found.element)
 	}else if(("list" %in% class(mylist)) && length(mylist) > 0) {
 		if(is.null(names(mylist))){
 			iteration_vec <- 1:length(mylist)
@@ -152,7 +160,8 @@ uge_first_occurence_matrix <- function(mylist, which.element, depth=0){
 			tmp.return <- uge_first_occurence_matrix(
 				mylist[[nameX]]
 				, which.element
-				,depth=depth+1)
+				,depth=depth+1
+				,max.depth=max.depth)
 			return.found <- tmp.return[[2]]
 			return.values <- tmp.return[[1]]
 			# if the following is false, which.element was not found at all or,
@@ -205,8 +214,7 @@ uge_first_occurence_matrix <- function(mylist, which.element, depth=0){
 		return(list("element"=tmp.df
 					, "found_which.element"=FALSE))
 	}else{ # Then it was not found
-		return(list("element"=NA
-					, "found_which.element"=FALSE))
+		return(not.found.element)
 	}
 }
 
