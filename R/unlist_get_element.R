@@ -23,6 +23,7 @@
 #' b$trainScaled <- b$train.res...p
 #' a_small <- a
 #' a_small$train.res...p <- a_small$train.res...p[19:20]
+#' a_small$train.res...p$CVstep1$cutoff <- NULL
 #' tmp <- unlist_get_element(a_small, "cutoff")
 #' tmp <- unlist_get_element(a, "cutoff")
 #' tmp <- unlist_get_element(b, "cutoff")
@@ -135,10 +136,8 @@ simplify_results <- function(interpreted.df, get.names=FALSE){
 # for "unlist_get_element_first_occurence_matrix"
 uge_first_occurence_matrix <- function(mylist, which.element
 									   , depth=0, max.depth=Inf){
-	not.found.element <- list("element"=NA
+	not.found.element <- list("element"=list(NA)
 							  , "found_which.element"=FALSE)
-
-	# print(depth)
 	if(which.element %in% names(mylist)){
 		retval <- mylist[[which.element]]
 		if(all(is.na(retval))){
@@ -197,7 +196,7 @@ uge_first_occurence_matrix <- function(mylist, which.element
 					removed.element <- small.df[, -ncol(small.df), drop=FALSE]
 					small.filled <- cbind(
 						removed.element
-						,matrix(NA_real_, nrow=nrow(small.df)
+						,matrix(NA, nrow=nrow(small.df)
 								, ncol = ncol(big.df) - ncol(small.df))
 						,small.df[, ncol(small.df), drop=FALSE])
 					if(big.or.small.first == "big"){
