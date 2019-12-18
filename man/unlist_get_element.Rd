@@ -30,7 +30,6 @@ b <- a
 b$trainScaled <- b$train.res...p
 a_small <- a
 a_small$train.res...p <- a_small$train.res...p[19:20]
-a_small$train.res...p$CVstep1$cutoff <- NULL
 tmp <- unlist_get_element(a_small, "cutoff")
 tmp <- unlist_get_element(a, "cutoff")
 tmp <- unlist_get_element(b, "cutoff")

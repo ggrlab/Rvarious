@@ -23,7 +23,6 @@
 #' b$trainScaled <- b$train.res...p
 #' a_small <- a
 #' a_small$train.res...p <- a_small$train.res...p[19:20]
-#' a_small$train.res...p$CVstep1$cutoff <- NULL
 #' tmp <- unlist_get_element(a_small, "cutoff")
 #' tmp <- unlist_get_element(a, "cutoff")
 #' tmp <- unlist_get_element(b, "cutoff")
@@ -169,11 +168,12 @@ uge_first_occurence_matrix <- function(mylist, which.element
 			if(!return.found){
 				new.element <- return.values
 			}else{ # otherwise it was found and we are exactly one above the bottom
-				if(length(return.values) > 1){
-					new.element <- list(return.values)
-				}else{
-					new.element <- return.values
-				}
+				# if(length(return.values) > 1){
+				# 	new.element <- list(return.values)
+				# }else{
+				# 	new.element <- return.values
+				# }
+				new.element <- list(return.values)
 			}
 			# now, new.element is either a list with length 1 OR a single value
 			new.withDepth <- cbind("new"=nameX, new.element)
