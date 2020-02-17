@@ -1,7 +1,7 @@
 Package: Rvarious
 Type: Package
 Title: Various R functions gathered
-Version: 0.1.10
+Version: 0.1.11
 Author: Gunther Glehr
 Maintainer: Gunther Glehr <gunther.glehr@gmx.de>
 Description: Functions which are already done:
@@ -24,5 +24,9 @@ Suggests:
     glmnet,
     grpregOverlap,
     knitr,
-    rmarkdown
+    rmarkdown, 
+    flowCore,
+    grpreg,
+    yaml,
+    zeroSum
 VignetteBuilder: knitr
