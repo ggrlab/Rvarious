@@ -74,7 +74,7 @@ coef_no_zero.cv.glmnet <- function(x, s="lambda.1se", ...
 								   , do.sort=FALSE
 								   , do.sort.sortfun=function(coefvec){order(abs(coefvec), decreasing = TRUE)}
 								   , sort.rownames.exceptions=c("(Intercept)", "intercept")){
-	tmp.coef <- glmnet::coef.cv.glmnet(x, s=s, ...)
+	tmp.coef <- glmnet:::coef.cv.glmnet(x, s=s, ...)
 	coef_no_zero_to_matrix(tmp.coef
 						   , do.sort, do.sort.sortfun, sort.rownames.exceptions)
 }
