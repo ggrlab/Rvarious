@@ -4,8 +4,14 @@
 \alias{coef_no_zero}
 \title{Get coefficients without zeros}
 \usage{
-coef_no_zero(x, s = "lambda.1se", ..., do.sort, do.sort.sortfun,
-  sort.rownames.exceptions)
+coef_no_zero(
+  x,
+  s = "lambda.1se",
+  ...,
+  do.sort,
+  do.sort.sortfun,
+  sort.rownames.exceptions
+)
 }
 \arguments{
 \item{x}{A model from

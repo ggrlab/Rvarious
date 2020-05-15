@@ -4,10 +4,20 @@
 \alias{plot_ratio_2d_score}
 \title{Plotting an "ratio"-plot}
 \usage{
-plot_ratio_2d_score(range.x, range.y, n.points.x, n.points.y,
-  coefs = c(minus = 1, plus = 1), titles = c(minus = "", plus = "",
-  total = ""), additional.points, cutoff.x, cutoff.y, interpolate = TRUE,
-  standardize.plot.color = FALSE, additional.points_color.values = NA)
+plot_ratio_2d_score(
+  range.x,
+  range.y,
+  n.points.x,
+  n.points.y,
+  coefs = c(minus = 1, plus = 1),
+  titles = c(minus = "", plus = "", total = ""),
+  additional.points,
+  cutoff.x,
+  cutoff.y,
+  interpolate = TRUE,
+  standardize.plot.color = FALSE,
+  additional.points_color.values = NA
+)
 }
 \arguments{
 \item{range.x}{Range of x axis}

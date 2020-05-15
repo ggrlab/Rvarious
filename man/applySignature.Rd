@@ -4,9 +4,14 @@
 \alias{applySignature}
 \title{Apply a feature signature on a matrix}
 \usage{
-applySignature(count.mat, genesig, interceptindex = NA,
-  genesig.matrix.colN = 1, genesig.data.frame.cols_names = 1,
-  genesig.data.frame.cols_coefs = 2)
+applySignature(
+  count.mat,
+  genesig,
+  interceptindex = NA,
+  genesig.matrix.colN = 1,
+  genesig.data.frame.cols_names = 1,
+  genesig.data.frame.cols_coefs = 2
+)
 }
 \arguments{
 \item{count.mat}{Matrix with cols=Samples and rows=features}

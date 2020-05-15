@@ -4,10 +4,12 @@
 \alias{coef_no_zero_to_matrix}
 \title{coef_no_zero result to matrix}
 \usage{
-coef_no_zero_to_matrix(coefs, do.sort = FALSE,
-  do.sort.sortfun = function(coefvec) {     order(abs(coefvec),
-  decreasing = TRUE) }, sort.rownames.exceptions = c("(Intercept)",
-  "intercept"))
+coef_no_zero_to_matrix(
+  coefs,
+  do.sort = FALSE,
+  do.sort.sortfun = function(coefvec) {     order(abs(coefvec), decreasing = TRUE) },
+  sort.rownames.exceptions = c("(Intercept)", "intercept")
+)
 }
 \arguments{
 \item{coefs}{some coefficients}

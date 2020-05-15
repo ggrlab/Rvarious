@@ -4,9 +4,14 @@
 \alias{ggcyto_arrange_wrapper}
 \title{Plot multiple colored ggcyto objects}
 \usage{
-ggcyto_arrange_wrapper(ggcyto.plotlist, facet.coloring.vec,
-  do.sort = TRUE, max.columns = 10, facet.coloring.title = "NoTitle",
-  global.axis.labels = TRUE)
+ggcyto_arrange_wrapper(
+  ggcyto.plotlist,
+  facet.coloring.vec,
+  do.sort = TRUE,
+  max.columns = 10,
+  facet.coloring.title = "NoTitle",
+  global.axis.labels = TRUE
+)
 }
 \arguments{
 \item{ggcyto.plotlist}{A list of ggcyto objects, received from ggcyto::ggcyto (tested: one sample one element)}

@@ -4,9 +4,14 @@
 \alias{cv.lambdaIndex}
 \title{Get lambdaindex}
 \usage{
-cv.lambdaIndex(fit, s, fit.lambda.name = "lambdas",
-  fit.lambda.error.name = "lldiff", fit.lambda.errorSD.name = "llSD",
-  ...)
+cv.lambdaIndex(
+  fit,
+  s,
+  fit.lambda.name = "lambdas",
+  fit.lambda.error.name = "lldiff",
+  fit.lambda.errorSD.name = "llSD",
+  ...
+)
 }
 \arguments{
 \item{fit}{A cv-model fit}

@@ -4,7 +4,9 @@
 \alias{check.all.identical}
 \title{Check if all elements are identical}
 \usage{
-check.all.identical(..., x = NULL, func = function(x) {     x })
+check.all.identical(..., x = NULL, func = function(x) {
+    x
+})
 }
 \arguments{
 \item{...}{A given list or additional parameters}

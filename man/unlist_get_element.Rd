@@ -4,8 +4,13 @@
 \alias{unlist_get_element}
 \title{Recursive unlisting for a specific element}
 \usage{
-unlist_get_element(mylist, which.element, simplify = TRUE,
-  get.names = FALSE, max.depth = Inf)
+unlist_get_element(
+  mylist,
+  which.element,
+  simplify = TRUE,
+  get.names = FALSE,
+  max.depth = Inf
+)
 }
 \arguments{
 \item{mylist}{Your listlistlist... you want to delist}

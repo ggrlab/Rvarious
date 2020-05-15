@@ -4,8 +4,11 @@
 \alias{facet_color_bg_manual}
 \title{Color a facet title background}
 \usage{
-facet_color_bg_manual(ggplotobj, bg.fills.vector = "red",
-  remove.axis.labels = FALSE)
+facet_color_bg_manual(
+  ggplotobj,
+  bg.fills.vector = "red",
+  remove.axis.labels = FALSE
+)
 }
 \arguments{
 \item{ggplotobj}{A ggplot object with facet}

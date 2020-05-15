@@ -4,12 +4,21 @@
 \alias{plot_interaction_2d_score}
 \title{Plotting an interaction plot}
 \usage{
-plot_interaction_2d_score(range.x, range.y, n.points.x, n.points.y,
-  coefs = c(x = 1, y = 1, interaction = 0.5), titles = c(x = "", y =
-  "", interaction = "Main plot title", total = ""), additional.points,
-  cutoff.x, cutoff.y, interpolate = TRUE,
-  standardize.plot.color = FALSE, additional.points_color.values = NA,
-  discrete.range = c("onlyValues", "onlyRect", "always"))
+plot_interaction_2d_score(
+  range.x,
+  range.y,
+  n.points.x,
+  n.points.y,
+  coefs = c(x = 1, y = 1, interaction = 0.5),
+  titles = c(x = "", y = "", interaction = "Main plot title", total = ""),
+  additional.points,
+  cutoff.x,
+  cutoff.y,
+  interpolate = TRUE,
+  standardize.plot.color = FALSE,
+  additional.points_color.values = NA,
+  discrete.range = c("onlyValues", "onlyRect", "always")
+)
 }
 \arguments{
 \item{range.x}{Range of x axis}

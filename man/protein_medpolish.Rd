@@ -4,9 +4,14 @@
 \alias{protein_medpolish}
 \title{Median polish to summarize proteins}
 \usage{
-protein_medpolish(peptidematrix, peptide_protein_affiliation,
-  previous_MP_params = NULL, overall_Included = TRUE, na.rm = TRUE,
-  return.completeMP = FALSE)
+protein_medpolish(
+  peptidematrix,
+  peptide_protein_affiliation,
+  previous_MP_params = NULL,
+  overall_Included = TRUE,
+  na.rm = TRUE,
+  return.completeMP = FALSE
+)
 }
 \arguments{
 \item{peptidematrix}{A matrix with rows=peptides and cols=samples}

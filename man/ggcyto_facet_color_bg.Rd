@@ -4,10 +4,14 @@
 \alias{ggcyto_facet_color_bg}
 \title{ggcyto facet coloring}
 \usage{
-ggcyto_facet_color_bg(ggcyto.plotlist, bg.values,
+ggcyto_facet_color_bg(
+  ggcyto.plotlist,
+  bg.values,
   numeric.color.palette = colorRampPalette(c("blue", "red")),
-  numeric.max.distinct = 50, bg.legend.title = "NoTitle",
-  remove.axis.labels = FALSE)
+  numeric.max.distinct = 50,
+  bg.legend.title = "NoTitle",
+  remove.axis.labels = FALSE
+)
 }
 \arguments{
 \item{ggcyto.plotlist}{A plotlist received when *samplewise* applying ggcyto}

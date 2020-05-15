@@ -1,7 +1,7 @@
 Package: Rvarious
 Type: Package
 Title: Various R functions gathered
-Version: 0.1.12
+Version: 0.1.13
 Author: Gunther Glehr
 Maintainer: Gunther Glehr <gunther.glehr@gmx.de>
 Description: Functions which are already done:
@@ -9,7 +9,7 @@ Description: Functions which are already done:
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Imports: 
     magrittr,
     scales,

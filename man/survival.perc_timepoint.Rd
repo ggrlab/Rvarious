@@ -4,8 +4,12 @@
 \alias{survival.perc_timepoint}
 \title{Survival percentage at timepoint}
 \usage{
-survival.perc_timepoint(survfit.obj, timepoint = 10, conf.int = 0.95,
-  ret.pvals = TRUE)
+survival.perc_timepoint(
+  survfit.obj,
+  timepoint = 10,
+  conf.int = 0.95,
+  ret.pvals = TRUE
+)
 }
 \arguments{
 \item{survfit.obj}{An object returned by survival::survfit()}
