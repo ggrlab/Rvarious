@@ -152,6 +152,7 @@ uge_first_occurence_matrix <- function(mylist, which.element
 		}else{
 			iteration_vec <- names(mylist)
 		}
+		tmp.df_was_created <- FALSE
 		# go through the current list elements
 		for(nameX in iteration_vec){
 			# one step deeper
@@ -178,8 +179,9 @@ uge_first_occurence_matrix <- function(mylist, which.element
 			# now, new.element is either a list with length 1 OR a single value
 			new.withDepth <- cbind("new"=nameX, new.element)
 			colnames(new.withDepth)[1] <- paste0("L", depth)
-			if(!exists("tmp.df")){
+			if(!tmp.df_was_created){
 				tmp.df <- new.withDepth
+				tmp.df_was_created <- TRUE
 			}else{
 				if(ncol(tmp.df) == ncol(new.withDepth)){
 					tmp.df <- rbind(tmp.df, new.withDepth)
