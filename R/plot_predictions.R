@@ -31,7 +31,7 @@ plot_predictions <- function(
 					  ,"prob.Infected"=predictions
 					  ,"trueValues"=trues
 					  ,"trueClass"=truenames[as.character(trues)])
-	tmp.res$prediction_cutoff <- ifelse(tmp.res$prob.Infected > cutoff, 1, 0)
+	tmp.res$prediction_cutoff <- ifelse(tmp.res$prob.Infected >= cutoff, 1, 0)
 	tmp.res <- arrange(tmp.res, prob.Infected)
 	tmp.res$sample <- factor(tmp.res$sample, levels=tmp.res$sample)
 	plot00 <- ggplot(tmp.res, aes(x=sample, y=prob.Infected, col=trueClass)) +
@@ -42,10 +42,12 @@ plot_predictions <- function(
 
 	if(probabilities){
 		plot00 <- plot00 +
-			scale_y_continuous(sec.axis =
-							   	sec_axis(~ .
-							   			 , breaks = c(1, 0), labels=c("certainly Infected", "certainly not infected"))
-							   , limits = c(0,1))
+			scale_y_continuous(
+				sec.axis =
+					sec_axis(~ .
+							 , breaks = c(1, 0)
+							 ,labels=paste('Certainly', c(truenames['1'], truenames['0'])))
+				, limits = c(0,1))
 	}
 	pred <- ROCR::prediction(predictions = tmp.res$prob.Infected
 							 ,labels = tmp.res$trueValues)
