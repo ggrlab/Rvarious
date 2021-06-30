@@ -40,7 +40,7 @@
 get_binary_performance <- function(
 	prob_positive,
 	class,
-	measures=c('ACC', 'SPEC', 'SENS'),
+	measures=c('AUC', 'ACC', 'SPEC', 'SENS'),
 	cutoff=0.5
 ){
 	rocit_perf <- ROCit::rocit(

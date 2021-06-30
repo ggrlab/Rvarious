@@ -32,7 +32,8 @@
 
 plot_probability_pred_true <- function(
 	predictions, trues, names, truenames=c("1"="infected", "0"="non.infected")
-	,maintitle="", cutoff=.5, probabilities=TRUE, traintest, blackwhite=FALSE){
+	,maintitle="", cutoff=.5, probabilities=TRUE, traintest, blackwhite=FALSE,
+	measures=c('AUC', 'ACC', 'SPEC', 'SENS')){
 	tmp.res <- tibble::tibble(
 		"sample"=names
 		,"prob.positiveclass"=predictions
@@ -78,7 +79,8 @@ plot_probability_pred_true <- function(
 	rocit_perf <- get_binary_performance(
 		prob_positive = tmp.res$prob.positiveclass,
 		class = tmp.res$trueValues,
-		cutoff = cutoff
+		cutoff = cutoff,
+		measures=measures
 	)
 
 	perf_subtitle_all <- paste0(names(rocit_perf$cutoff_measures), "=", round(rocit_perf$cutoff_measures, 3), collapse = "  ")
@@ -90,11 +92,13 @@ plot_probability_pred_true <- function(
 		perf_train <- get_binary_performance(
 			prob_positive = res.train$prob.positiveclass
 			,class = res.train$trueValues
-			,cutoff = cutoff)
+			,cutoff = cutoff,
+			measures=measures)
 		perf_test <- get_binary_performance(
 			prob_positive = res.test$prob.positiveclass
 			,class = res.test$trueValues
-			,cutoff = cutoff)
+			,cutoff = cutoff,
+			measures=measures)
 		perf_subtitle <- paste0("only test:   ", paste0(names(perf_test$cutoff_measures), "=", round(perf_test$cutoff_measures, 3), collapse = "  "))
 		perf_list <- c(perf_list, list("train"=perf_train, "test"=perf_test))
 	}
