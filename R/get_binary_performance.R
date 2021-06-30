@@ -52,7 +52,6 @@ get_binary_performance <- function(
 		rocit_perf,
 		measure=measures
 	)
-	browser()
 	rocit_singleperf <- data.frame(do.call(cbind, rocit_singleperf))
 	# Get the first cutoff which is smaller than the prospected cutoffs
 	# as the cutoffs are sorted decreasingly
