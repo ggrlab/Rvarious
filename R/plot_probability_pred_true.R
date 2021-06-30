@@ -119,7 +119,6 @@ plot_probability_pred_true <- function(
 							   ,subtitle = perf_subtitle)
 
 
-	ROCR::plot(perf_list$allsamples$perf, main=maintitle, sub=paste0("all: ", perf_subtitle_all))
 	perf_list <- c(perf_list, "cutoff"=cutoff)
 	return(
 		list("perf"=perf_list,
