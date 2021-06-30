@@ -1,7 +1,7 @@
 Package: Rvarious
 Type: Package
 Title: Various R functions gathered
-Version: 0.1.16
+Version: 0.1.17
 Author: Gunther Glehr
 Maintainer: Gunther Glehr <gunther.glehr@gmx.de>
 Description: Functions which are already done:
@@ -17,7 +17,8 @@ Imports:
     ggpubr,
     gridExtra,
     reshape2,
-    tibble
+    tibble,
+    ROCit
 Suggests: 
     Matrix,
     survival,

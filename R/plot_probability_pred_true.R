@@ -69,7 +69,6 @@ plot_probability_pred_true <- function(
 							   			 , breaks = c(1, 0), labels=c("certainly Infected", "certainly not infected"))
 							   , limits = c(0,1))
 	}
-	browser()
 	rocit_perf <- get_binary_performance(
 		prob_positive = tmp.res$prob.positiveclass,
 		class = tmp.res$trueValues,
