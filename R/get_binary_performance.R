@@ -21,19 +21,20 @@
 #'
 #' @examples
 #'
-#' get_performances(
+#' get_binary_performance(
 #' 	prob_positive = 1:100,
 #' 	class = c(rep(0, 50), rep(1, 50))
 #' )
-#' get_performances(
+#' get_binary_performance(
 #' 	prob_positive = 1:100,
 #' 	class = c(rep(0, 50), rep(1, 50)),
 #' 	cutoff = 50
 #' )
-#' get_performances(
+#' get_binary_performance(
 #' 	prob_positive = (1:100)/100,
 #' 	class = c(rep(0, 50), rep(1, 50)),
-#' 	cutoff = .50
+#' 	cutoff = .50,
+#' 	measures='AUC'
 #' )
 
 get_binary_performance <- function(
@@ -51,10 +52,17 @@ get_binary_performance <- function(
 		rocit_perf,
 		measure=measures
 	)
+	browser()
 	rocit_singleperf <- data.frame(do.call(cbind, rocit_singleperf))
 	# Get the first cutoff which is smaller than the prospected cutoffs
 	# as the cutoffs are sorted decreasingly
 	cutoff_index <- which(rocit_singleperf$Cutoff <= cutoff)[1]
 	rocit_singleperf <- rocit_singleperf[cutoff_index, ]
+
+	rocit_measures <- unlist(rocit_perf[names(rocit_perf) %in% measures])
+	for(measureX in names(rocit_measures)){
+		rocit_singleperf <- cbind(rocit_singleperf, rocit_measures[measureX])
+		colnames(rocit_singleperf)[length(rocit_singleperf)] <- measureX
+	}
 	return(list('perf'=rocit_perf, 'cutoff_measures'=rocit_singleperf))
 }

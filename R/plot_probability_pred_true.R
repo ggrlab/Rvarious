@@ -64,10 +64,16 @@ plot_probability_pred_true <- function(
 
 	if(probabilities){
 		plot00 <- plot00 +
-			ggplot2::scale_y_continuous(sec.axis =
-											ggplot2::sec_axis(~ .
-							   			 , breaks = c(1, 0), labels=c("certainly Infected", "certainly not infected"))
-							   , limits = c(0,1))
+			ggplot2::scale_y_continuous(
+				sec.axis =
+					ggplot2::sec_axis(~ .
+									  , breaks = c(1, 0),
+									  labels=c(paste0("certainly ",
+									  				truenames['1']),
+									  		 paste0("certainly ",
+									  		 	   truenames['0']))
+									  )
+				, limits = c(0,1))
 	}
 	rocit_perf <- get_binary_performance(
 		prob_positive = tmp.res$prob.positiveclass,
