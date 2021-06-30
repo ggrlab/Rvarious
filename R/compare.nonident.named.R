@@ -64,7 +64,8 @@ compare.nonident.named <- function(...){
 
 	uniquenames <- unique(unlist(lapply(clean.valuelist, names)))
 	uniquenames <- sort(uniquenames)
-	coef.df <- data.frame(lapply(clean.valuelist, function(x)x[uniquenames]))
+	coef.df <- sapply(clean.valuelist, function(x)x[uniquenames])
+	coef.df <- data.frame(coef.df)
 	rownames(coef.df) <- uniquenames
 	return(coef.df)
 }
