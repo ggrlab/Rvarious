@@ -8,7 +8,7 @@
 #' @param maintitle
 #' @param cutoff
 #' @param probabilities
-#' @param traintest
+#' @param sampletype
 #' @param blackwhite
 #'
 #' @return
@@ -17,7 +17,7 @@
 #' @examples
 #'
 #' set.seed(17)
-#' traintest <- sample(c("train", "test"), 100, replace = TRUE)
+#' sampletype <- sample(c("train", "test"), 100, replace = TRUE)
 #' plot_probability_pred_true(predictions = 1:100
 #' 						   ,trues = c(rep(0, 50), rep(1, 50))
 #' 						   ,names = paste0("S", 1:100)
@@ -25,14 +25,15 @@
 #' 						   ,maintitle = "CRP"
 #' 						   ,cutoff = 60
 #' 						   ,probabilities = FALSE
-#' 						   ,traintest=traintest
+#' 						   # ,sampletype=sampletype
 #' 						   ,blackwhite = TRUE
 #' )
 
 
 plot_probability_pred_true <- function(
 	predictions, trues, names, truenames=c("1"="infected", "0"="non.infected")
-	,maintitle="", cutoff=.5, probabilities=TRUE, traintest, blackwhite=FALSE,
+	,maintitle="", cutoff=.5, probabilities=TRUE,
+	sampletype, blackwhite=FALSE,
 	measures=c('AUC', 'ACC', 'SPEC', 'SENS')){
 	tmp.res <- tibble::tibble(
 		"sample"=names
@@ -40,21 +41,32 @@ plot_probability_pred_true <- function(
 		,"trueValues"=trues
 		,"trueClass"=truenames[as.character(trues)]
 		)
-	if(!missing(traintest) && length(traintest) == nrow(tmp.res)){
-		tmp.res$traintest <- traintest
+	if(!missing(sampletype) && length(sampletype) == nrow(tmp.res)){
+		tmp.res$sampletype <- sampletype
+	}else{
+		tmp.res$sampletype <- 'same'
 	}
 
 	tmp.res <- dplyr::arrange(tmp.res, prob.positiveclass)
 	tmp.res$sample <- factor(tmp.res$sample, levels=tmp.res$sample)
 
 	if(blackwhite){
-		tmp.res$sampletype <- paste0(tmp.res$trueClass, "_", tmp.res$traintest)
+		if(all(tmp.res$sampletype == 'same')){
+			tmp.res$sampletype <- paste0(tmp.res$trueClass)
+		}else{
+			tmp.res$sampletype <- paste0(tmp.res$trueClass, "_", tmp.res$sampletype)
+		}
 		plot00 <- ggplot2::ggplot(tmp.res, ggplot2::aes(x=sample, y=prob.positiveclass, shape=sampletype))+
 			ggplot2::scale_shape_manual(values=c(17, 2, 16, 1))
 
 	}else{
-		plot00 <- ggplot2::ggplot(tmp.res, ggplot2::aes(x=sample, y=prob.positiveclass, shape=traintest, col=trueClass))+
-			ggplot2::scale_shape_manual(values=c(17, 2))
+		if(all(tmp.res$sampletype == 'same')){
+			plot00 <- ggplot2::ggplot(tmp.res, ggplot2::aes(x=sample, y=prob.positiveclass, col=trueClass))+
+				ggplot2::scale_shape_manual(values=c(17, 2))
+		}else{
+			plot00 <- ggplot2::ggplot(tmp.res, ggplot2::aes(x=sample, y=prob.positiveclass, shape=sampletype, col=trueClass))+
+				ggplot2::scale_shape_manual(values=c(17, 2))
+		}
 	}
 	plot00 <- plot00 +
 		ggplot2::geom_point(na.rm = TRUE)+
@@ -86,9 +98,9 @@ plot_probability_pred_true <- function(
 	perf_subtitle_all <- paste0(names(rocit_perf$cutoff_measures), "=", round(rocit_perf$cutoff_measures, 3), collapse = "  ")
 	perf_subtitle <- perf_subtitle_all
 	perf_list <- list("allsamples"=rocit_perf)
-	if(!missing(traintest) && length(traintest) == nrow(tmp.res)){
-		res.train <- tmp.res[tmp.res$traintest == "train", ]
-		res.test <- tmp.res[tmp.res$traintest == "test", ]
+	if(!missing(sampletype) && length(sampletype) == nrow(tmp.res)){
+		res.train <- tmp.res[tmp.res$sampletype == "train", ]
+		res.test <- tmp.res[tmp.res$sampletype == "test", ]
 		perf_train <- get_binary_performance(
 			prob_positive = res.train$prob.positiveclass
 			,class = res.train$trueValues
