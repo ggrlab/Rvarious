@@ -16,15 +16,15 @@
 #' @examples
 #' dir.create_noExistWarn("removeme")
 #' dir.create_noExistWarn("removeme1/sfdg/a")
-
-dir.create_noExistWarn <- function(dirpath, ...){
-	withCallingHandlers(
-		expr={dir.create(dirpath, ...)}
-		,warning=function(w){
-			if(endsWith(conditionMessage(w), "already exists")){
-				invokeRestart("muffleWarning")
-			}
-		})
+dir.create_noExistWarn <- function(dirpath, ...) {
+    withCallingHandlers(
+        expr = {
+            dir.create(dirpath, ...)
+        },
+        warning = function(w) {
+            if (endsWith(conditionMessage(w), "already exists")) {
+                invokeRestart("muffleWarning")
+            }
+        }
+    )
 }
-
-

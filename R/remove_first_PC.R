@@ -19,17 +19,16 @@
 #' data("mtcars")
 #' tmp <- t(mtcars[, c(1:7, 10, 11)])
 #' remove_first_PC(tmp)
+remove_first_PC <- function(X) {
+    mt.pca <- prcomp(t(X), scale = TRUE, center = TRUE)
+    R <- mt.pca$rotation
+    A <- t(mt.pca$rotation) %*% X # =applied
 
-remove_first_PC <- function(X){
-	mt.pca <- prcomp(t(X), scale = TRUE, center = TRUE)
-	R <- mt.pca$rotation
-	A <- t(mt.pca$rotation) %*% X # =applied
-
-	# X' = X - R_{.1} * A_{1.}
-	X_without_PC1 <- X - R[, 1, drop=FALSE] %*% A[1, , drop=FALSE]
-	# check:
-	if(mean(t(R[, 1, drop=FALSE]) %*% X_without_PC1) > 1e-5){ # should be approx zero
-		stop("Something went wrong, the first principal component applied should be approx. zero")
-	}
-	return(X_without_PC1)
+    # X' = X - R_{.1} * A_{1.}
+    X_without_PC1 <- X - R[, 1, drop = FALSE] %*% A[1, , drop = FALSE]
+    # check:
+    if (mean(t(R[, 1, drop = FALSE]) %*% X_without_PC1) > 1e-5) { # should be approx zero
+        stop("Something went wrong, the first principal component applied should be approx. zero")
+    }
+    return(X_without_PC1)
 }

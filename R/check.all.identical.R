@@ -25,24 +25,28 @@
 #' check.all.identical("a", "a", "a")
 #' check.all.identical(list("a", "a", "a"))
 #' check.all.identical(list("a", "a", "a"), "a")
-check.all.identical <- function(..., x=NULL, func=function(x){x}){
-	tmplist <- list(...)
-	if(length(tmplist) == 0){
-		tmplist <- x
-	}else{
-		tmplist <- c(x, tmplist)
-	}
-	if(length(tmplist) < 2){
-		warning("Less than 2 elements in ..., they are of course all the same")
-	}else{
-		applied.func <- lapply(tmplist, function(y){func(y)})
-		first.val <- applied.func[[1]]
-		for(indexN in 2:length(applied.func)){
-			if(!identical(first.val, applied.func[[indexN]])){
-				return(FALSE)
-				# are.all.identical <- FALSE # this has the performance issue that even if it is already FALSE, it will still go through all elements in ...
-			}
-		}
-	}
-	return(TRUE)
+check.all.identical <- function(..., x = NULL, func = function(x) {
+                                    x
+                                }) {
+    tmplist <- list(...)
+    if (length(tmplist) == 0) {
+        tmplist <- x
+    } else {
+        tmplist <- c(x, tmplist)
+    }
+    if (length(tmplist) < 2) {
+        warning("Less than 2 elements in ..., they are of course all the same")
+    } else {
+        applied.func <- lapply(tmplist, function(y) {
+            func(y)
+        })
+        first.val <- applied.func[[1]]
+        for (indexN in 2:length(applied.func)) {
+            if (!identical(first.val, applied.func[[indexN]])) {
+                return(FALSE)
+                # are.all.identical <- FALSE # this has the performance issue that even if it is already FALSE, it will still go through all elements in ...
+            }
+        }
+    }
+    return(TRUE)
 }
