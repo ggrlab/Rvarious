@@ -1,0 +1,5 @@
+# Howto install: 
+# 1. Build the package
+devtools::build()
+# 2. Install the package from source
+install.packages("../Rvarious_0.1.17.tar.gz", repos = NULL, type="source")
