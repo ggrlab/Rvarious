@@ -32,8 +32,8 @@ survival.perc_timepoint <- function(survfit.obj, timepoint = 10, conf.int = 0.95
         # calculation of p-values taken from SurvivalAnalysis_KleinMoeschberger,
         # 7.8 "Test Based on Differences in Outcome at a Fixed Point in Time"
         if (nrow(two_survrows) != 2) {
-              stop("Only works with two rows!")
-          }
+            stop("Only works with two rows!")
+        }
         z_score <- (two_survrows$surv[1] - two_survrows$surv[2]) /
             (sqrt(two_survrows$std.err[1]^2 + two_survrows$std.err[2]^2))
         pz <- pnorm(abs(z_score))
@@ -41,8 +41,8 @@ survival.perc_timepoint <- function(survfit.obj, timepoint = 10, conf.int = 0.95
         return(2 * (1 - pz))
     }
     if (conf.int != 0.95) {
-          stop("To change the confidence interval you have to change it in survfit.obj. See ?survival::survfitKM")
-      }
+        stop("To change the confidence interval you have to change it in survfit.obj. See ?survival::survfitKM")
+    }
     a <- summary(survfit.obj, time = timepoint)
     tmp.df <- data.frame(
         "time" = a$time, "strata" = a$strata, "surv" = a$surv,

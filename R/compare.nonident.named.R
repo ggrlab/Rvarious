@@ -35,8 +35,8 @@ compare.nonident.named <- function(...) {
     for (named.N in 1:length(valuelist)) {
         tmpname <- names(valuelist)[named.N]
         if (is.null(tmpname) || tmpname == "") {
-              tmpname <- paste0("NoNameGiven.", named.N)
-          }
+            tmpname <- paste0("NoNameGiven.", named.N)
+        }
         if (is.matrix(valuelist[[named.N]])) {
             for (colN in 1:ncol(valuelist[[named.N]])) {
                 tmp <- valuelist[[named.N]][, colN]
@@ -58,8 +58,8 @@ compare.nonident.named <- function(...) {
 
     for (clean.N in 1:length(clean.valuelist)) {
         if (is.null(names(clean.valuelist[[clean.N]]))) {
-              stop(paste0("clean.valuelist element ", clean.N, " has no names!"))
-          }
+            stop(paste0("clean.valuelist element ", clean.N, " has no names!"))
+        }
     }
 
     uniquenames <- unique(unlist(lapply(clean.valuelist, names)))
