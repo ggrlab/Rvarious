@@ -1,5 +1,9 @@
 # Howto install: 
+# 0. Install devtools
+install.packages("devtools")
 # 1. Build the package
 devtools::build()
-# 2. Install the package from source
+# 2. Install dependencies
+install.packages("ROCit")
+# 3. Install the package from source
 install.packages("../Rvarious_0.1.17.tar.gz", repos = NULL, type="source")
