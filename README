@@ -6,4 +6,6 @@ devtools::build()
 # 2. Install dependencies
 install.packages("ROCit")
 # 3. Install the package from source
-install.packages("../Rvarious_0.1.17.tar.gz", repos = NULL, type="source")
+all_packaged_versions <- file.info(list.files("..", pattern="Rvarious_.*.tar.gz", full.names=TRUE))
+most_recent <- rownames(all_packaged_versions)[which.max(all_packaged_versions[["mtime"]])]
+install.packages(most_recent, repos = NULL, type="source")
