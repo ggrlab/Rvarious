@@ -21,23 +21,30 @@ Prediction matrix of a multiclass problem
 }
 \examples{
 n_samples <- 200
-classes <- c('A', 'B', 'C', 'D')
-ex_trues <- sample(classes, n_samples, replace=TRUE)
+classes <- c("A", "B", "C", "D")
+ex_trues <- sample(classes, n_samples, replace = TRUE)
 
 example_predictions <- lapply(
-	ex_trues,
-	function(x){multiclass_probability_simulation(length(classes))}
+    ex_trues,
+    function(x) {
+        multiclass_probability_simulation(length(classes))
+    }
 )
 example_predictions <- do.call(rbind, example_predictions)
 colnames(example_predictions) <- classes
 
 
-pdf('removeme1.pdf')
-print(predplot_multiclass(pred_matrix = example_predictions
-					,true_values = ex_trues))
-for(complete_letter in classes){
-	print(predplot_multiclass(pred_matrix = example_predictions
-							  ,true_values = rep(complete_letter, nrow(example_predictions))))
+pdf("removeme1.pdf")
+print(predplot_multiclass(
+    pred_matrix = example_predictions,
+    true_values = ex_trues
+))
+for (complete_letter in classes) {
+    print(predplot_multiclass(
+        pred_matrix = example_predictions,
+        true_values = rep(complete_letter, nrow(example_predictions))
+    ))
 }
 dev.off()
+
 }

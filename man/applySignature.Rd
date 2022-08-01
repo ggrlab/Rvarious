@@ -34,50 +34,68 @@ response named numeric vector, Holds the response for each sample
 Apply a feature signature on a matrix
 }
 \examples{
-datamat <- matrix(1:20, nrow=5)
+datamat <- matrix(1:20, nrow = 5)
 colnames(datamat) <- paste0("S", 1:ncol(datamat))
 rownames(datamat) <- paste0("F", 1:nrow(datamat))
 
 sig1 <- rep(2, nrow(datamat))
 names(sig1) <- rownames(datamat)
-applySignature(count.mat = datamat
-			   ,genesig = sig1)
+applySignature(
+    count.mat = datamat,
+    genesig = sig1
+)
 
 
 sig2 <- as.matrix(sig1)
-applySignature(count.mat = datamat
-			   ,genesig = sig2)
+applySignature(
+    count.mat = datamat,
+    genesig = sig2
+)
 
-sig3 <- cbind(sig1, -1*sig1, 2*sig1)
-applySignature(count.mat = datamat
-			   ,genesig = sig3
-			   ,genesig.matrix.colN = 1)
-applySignature(count.mat = datamat
-			   ,genesig = sig3
-			   ,genesig.matrix.colN = 2)
+sig3 <- cbind(sig1, -1 * sig1, 2 * sig1)
+applySignature(
+    count.mat = datamat,
+    genesig = sig3,
+    genesig.matrix.colN = 1
+)
+applySignature(
+    count.mat = datamat,
+    genesig = sig3,
+    genesig.matrix.colN = 2
+)
 
 sig4 <- as.data.frame(sig3)
-applySignature(count.mat = datamat
-			   ,genesig = sig4
-			   ,genesig.data.frame.cols_names = 0
-			   ,genesig.data.frame.cols_coefs = 1)
-applySignature(count.mat = datamat
-			   ,genesig = sig4
-			   ,genesig.data.frame.cols_names = 0
-			   ,genesig.data.frame.cols_coefs = 2)
+applySignature(
+    count.mat = datamat,
+    genesig = sig4,
+    genesig.data.frame.cols_names = 0,
+    genesig.data.frame.cols_coefs = 1
+)
+applySignature(
+    count.mat = datamat,
+    genesig = sig4,
+    genesig.data.frame.cols_names = 0,
+    genesig.data.frame.cols_coefs = 2
+)
 sig5 <- sig4
 sig5$names <- rownames(sig5)
 rownames(sig5) <- NULL
-applySignature(count.mat = datamat
-			   ,genesig = sig5
-			   ,genesig.data.frame.cols_names = 4
-			   ,genesig.data.frame.cols_coefs = 2)
-applySignature(count.mat = datamat
-			   ,genesig = sig5
-			   ,genesig.data.frame.cols_names = "names"
-			   ,genesig.data.frame.cols_coefs = 2)
-applySignature(count.mat = datamat
-			   ,genesig = sig5
-			   ,genesig.data.frame.cols_names = 4
-			   ,genesig.data.frame.cols_coefs = "V2")
+applySignature(
+    count.mat = datamat,
+    genesig = sig5,
+    genesig.data.frame.cols_names = 4,
+    genesig.data.frame.cols_coefs = 2
+)
+applySignature(
+    count.mat = datamat,
+    genesig = sig5,
+    genesig.data.frame.cols_names = "names",
+    genesig.data.frame.cols_coefs = 2
+)
+applySignature(
+    count.mat = datamat,
+    genesig = sig5,
+    genesig.data.frame.cols_names = 4,
+    genesig.data.frame.cols_coefs = "V2"
+)
 }

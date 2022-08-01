@@ -23,10 +23,14 @@ Print which elements are in the first but not in the second vector. And the
 other way aroung
 }
 \examples{
-check_missing_names(charvec.1 = letters[1:5]
-					,charvec.2 = letters[4:6])
-check_missing_names(charvec.1 = letters[1:5]
-					,charvec.2 = letters[4:6]
-					,name.1 = "firstLetters"
-					,name.2 = "secondLetters")
+check_missing_names(
+    charvec.1 = letters[1:5],
+    charvec.2 = letters[4:6]
+)
+check_missing_names(
+    charvec.1 = letters[1:5],
+    charvec.2 = letters[4:6],
+    name.1 = "firstLetters",
+    name.2 = "secondLetters"
+)
 }

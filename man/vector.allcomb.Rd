@@ -24,14 +24,14 @@ valuename1_<combfun>_valuename2
 Generate all possible combinations of a named vector with a specific combination function.
 }
 \examples{
-vector.allcomb(1:10, combfun = function(x, y)x**2, combfun.name = "^2")
+vector.allcomb(1:10, combfun = function(x, y) x**2, combfun.name = "^2")
 vector.allcomb(1:10, combfun = "*")
 myvec <- 1:10
 names(myvec) <- paste0("gene", myvec)
 vector.allcomb(1:10, combfun = "-")
 vector.allcomb(1:10, combfun = "/")
-complex_function <- function(x, y){
-	x**y
+complex_function <- function(x, y) {
+    x**y
 }
 vector.allcomb(1:10, combfun = complex_function, combfun.name = "complex")
 }

@@ -23,12 +23,12 @@ vals1 <- 1:10
 names(vals1) <- LETTERS[vals1]
 vals2 <- 5:12
 names(vals2) <- LETTERS[vals2]
-compare.nonident.named(tmp=vals1, vals2)
+compare.nonident.named(tmp = vals1, vals2)
 # the following could not work as the rownames are missing!
 # compare.nonident.named(tmp=matrix(1:10, ncol=2))
-tmpmat <- matrix(1:10, ncol=2)
+tmpmat <- matrix(1:10, ncol = 2)
 rownames(tmpmat) <- LETTERS[1:nrow(tmpmat)]
-compare.nonident.named(tmp=tmpmat)
+compare.nonident.named(tmp = tmpmat)
 compare.nonident.named(tmpmat)
 compare.nonident.named(tmpmat, vals2)
 }

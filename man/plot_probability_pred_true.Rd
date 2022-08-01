@@ -12,8 +12,9 @@ plot_probability_pred_true(
   maintitle = "",
   cutoff = 0.5,
   probabilities = TRUE,
-  traintest,
-  blackwhite = FALSE
+  sampletype,
+  blackwhite = FALSE,
+  measures = c("AUC", "ACC", "SPEC", "SENS")
 )
 }
 \arguments{
@@ -28,15 +29,17 @@ Title
 \examples{
 
 set.seed(17)
-traintest <- sample(c("train", "test"), 100, replace = TRUE)
-plot_probability_pred_true(predictions = 1:100
-						   ,trues = c(rep(0, 50), rep(1, 50))
-						   ,names = paste0("S", 1:100)
-						   ,truenames=c("1"="infected", "0"="non.infected")
-						   ,maintitle = "CRP"
-						   ,cutoff = 60
-						   ,probabilities = FALSE
-						   ,traintest=traintest
-						   ,blackwhite = TRUE
+sampletype <- sample(c("train", "test"), 100, replace = TRUE)
+plot_probability_pred_true(
+    predictions = 1:100,
+    trues = c(rep(0, 50), rep(1, 50)),
+    names = paste0("S", 1:100),
+    truenames = c("1" = "infected", "0" = "non.infected"),
+    maintitle = "CRP",
+    cutoff = 60,
+    probabilities = FALSE
+    # ,sampletype=sampletype
+    , blackwhite = TRUE
 )
+
 }

@@ -30,9 +30,9 @@ data(GvHD)
 fs <- GvHD[1:3]
 col1 <- "`FSC-H`"
 col2 <- "`SSC-H`"
-p.list <- flowCore::fsApply(fs, function(x){
-	ggcyto(x, aes_string(col1,col2))  +
-		geom_hex(bins = 100)
+p.list <- flowCore::fsApply(fs, function(x) {
+    ggcyto(x, aes_string(col1, col2)) +
+        geom_hex(bins = 100)
 })
 ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", "a")))
 ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", NA)))

@@ -37,6 +37,3 @@ A dataframe with AUC, accuracy, sensitivity, specificity and the used cutoff.
 \description{
 Title
 }
-\examples{
-
-}

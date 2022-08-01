@@ -31,4 +31,5 @@ graph_from_rpart(fit)
 # 	d = na.omit(generated_edges),
 # 	vertices = data.frame('id'=1:length(depth_vec)),
 # 	directed = TRUE)
+
 }

@@ -7,7 +7,7 @@
 get_binary_performance(
   prob_positive,
   class,
-  measures = c("ACC", "SPEC", "SENS"),
+  measures = c("AUC", "ACC", "SPEC", "SENS"),
   cutoff = 0.5
 )
 }
@@ -32,18 +32,19 @@ Get performance measures for binary classification problems
 }
 \examples{
 
-get_performances(
-	prob_positive = 1:100,
-	class = c(rep(0, 50), rep(1, 50))
+get_binary_performance(
+    prob_positive = 1:100,
+    class = c(rep(0, 50), rep(1, 50))
 )
-get_performances(
-	prob_positive = 1:100,
-	class = c(rep(0, 50), rep(1, 50)),
-	cutoff = 50
+get_binary_performance(
+    prob_positive = 1:100,
+    class = c(rep(0, 50), rep(1, 50)),
+    cutoff = 50
 )
-get_performances(
-	prob_positive = (1:100)/100,
-	class = c(rep(0, 50), rep(1, 50)),
-	cutoff = .50
+get_binary_performance(
+    prob_positive = (1:100) / 100,
+    class = c(rep(0, 50), rep(1, 50)),
+    cutoff = .50,
+    measures = "AUC"
 )
 }

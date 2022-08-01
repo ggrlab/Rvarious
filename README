@@ -2,6 +2,7 @@
 # 0. Install devtools
 install.packages("devtools")
 # 1. Build the package
+devtools::document()
 devtools::build()
 # 2. Install dependencies
 install.packages("ROCit")

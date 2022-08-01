@@ -56,20 +56,26 @@ And the total score
 }
 \examples{
 library(ggplot2)
-testing_points <- expand.grid(x=(-1:5), y=(-1:9))
-plot_ratio_2d_score(range.x = c(-5, 5)
-					,n.points.x = 100
-					,coefs = c(1, -1))
-plot_ratio_2d_score(range.x = range(testing_points$x)
-					   ,range.y = range(testing_points$y)
-					   ,n.points.x = 100
-					   ,coefs = c(1, 1)
-					   ,additional.points = testing_points)
-plot_ratio_2d_score(range.x = range(testing_points$x)
-					   ,range.y = range(testing_points$y)
-					   ,n.points.x = 20
-					   ,coefs = c(1, 1)
-					   ,additional.points = testing_points
-					   ,cutoff.x = 2, cutoff.y = 1
+testing_points <- expand.grid(x = (-1:5), y = (-1:9))
+plot_ratio_2d_score(
+    range.x = c(-5, 5),
+    n.points.x = 100,
+    coefs = c(1, -1)
 )
+plot_ratio_2d_score(
+    range.x = range(testing_points$x),
+    range.y = range(testing_points$y),
+    n.points.x = 100,
+    coefs = c(1, 1),
+    additional.points = testing_points
+)
+plot_ratio_2d_score(
+    range.x = range(testing_points$x),
+    range.y = range(testing_points$y),
+    n.points.x = 20,
+    coefs = c(1, 1),
+    additional.points = testing_points,
+    cutoff.x = 2, cutoff.y = 1
+)
+
 }

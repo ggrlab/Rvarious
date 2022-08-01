@@ -25,7 +25,8 @@ Fill the background of a facet title with color!
 
 #'
 library(ggplot2)
-p <- ggplot(mpg, aes(displ, cty)) + geom_point()
+p <- ggplot(mpg, aes(displ, cty)) +
+    geom_point()
 p_colfacetted <- p + facet_grid(cols = vars(cyl))
 facet_color_bg_manual(p_colfacetted, "yellow")
 facet_color_bg_manual(p_colfacetted, "green")

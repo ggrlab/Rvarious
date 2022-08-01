@@ -19,7 +19,7 @@ in the first column
 Get single coefficients from ratio signature
 }
 \examples{
-ratio.signature <- c("longname.b_/_longname.a"=1, "longname.c_/_longname.b"=-1)
+ratio.signature <- c("longname.b_/_longname.a" = 1, "longname.c_/_longname.b" = -1)
 single.coef_signature <- singleCoef_ratioCoef(ratio.signature)
 print(single.coef_signature)
 }

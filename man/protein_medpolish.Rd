@@ -40,35 +40,43 @@ A named list
 Median polish to summarize proteins from multiple peptides
 }
 \examples{
-ncol=10
-nrow=15
-examplemat <- matrix(rnorm(ncol*nrow), ncol=ncol, nrow=nrow)
+ncol <- 10
+nrow <- 15
+examplemat <- matrix(rnorm(ncol * nrow), ncol = ncol, nrow = nrow)
 rownames(examplemat) <- paste0("peptide", 1:nrow)
 colnames(examplemat) <- paste0("sample", 1:ncol)
-protein_affiliations <- c(rep("Protein1", 5)
-						  ,rep("Protein2", 3)
-						  ,rep("Protein3", 2)
-						  ,rep("Protein4", 5))
-tmp <- protein_medpolish(peptidematrix = examplemat
-						 ,peptide_protein_affiliation = protein_affiliations
-						 ,previous_MP_params = NULL
-						 ,overall_Included = TRUE
-						 ,na.rm = TRUE)
+protein_affiliations <- c(
+    rep("Protein1", 5),
+    rep("Protein2", 3),
+    rep("Protein3", 2),
+    rep("Protein4", 5)
+)
+tmp <- protein_medpolish(
+    peptidematrix = examplemat,
+    peptide_protein_affiliation = protein_affiliations,
+    previous_MP_params = NULL,
+    overall_Included = TRUE,
+    na.rm = TRUE
+)
 tmp$protein.values
-tmp2 <- protein_medpolish(peptidematrix = examplemat
-						  ,peptide_protein_affiliation = protein_affiliations
-						  ,previous_MP_params = tmp
-						  ,overall_Included = TRUE
-						  ,na.rm = TRUE)
+tmp2 <- protein_medpolish(
+    peptidematrix = examplemat,
+    peptide_protein_affiliation = protein_affiliations,
+    previous_MP_params = tmp,
+    overall_Included = TRUE,
+    na.rm = TRUE
+)
 tmp2$protein.values
 summary(c(tmp$protein.values - tmp2$protein.values)) # almost zero, done.
 
 
 
-tmp <- protein_medpolish(peptidematrix = examplemat
-						 ,peptide_protein_affiliation = protein_affiliations
-						 ,previous_MP_params = NULL
-						 ,overall_Included = TRUE
-						 ,na.rm = TRUE
-						 ,return.completeMP=TRUE)
+tmp <- protein_medpolish(
+    peptidematrix = examplemat,
+    peptide_protein_affiliation = protein_affiliations,
+    previous_MP_params = NULL,
+    overall_Included = TRUE,
+    na.rm = TRUE,
+    return.completeMP = TRUE
+)
 }

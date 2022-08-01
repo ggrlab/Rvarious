@@ -45,13 +45,13 @@ plot_samplewise(
 Plot multiple (1+) values for the same names
 }
 \examples{
-values.df <- data.frame("a"=1:20, "b"=1:20+0.5, 'c'=(20:1)*.5)
-names <- paste0('f_', 101:120)
+values.df <- data.frame("a" = 1:20, "b" = 1:20 + 0.5, "c" = (20:1) * .5)
+names <- paste0("f_", 101:120)
 print(plot_samplewise(values.df, names))
-print(plot_samplewise(values.df, names, sorting.dfindex=3))
-print(plot_samplewise(values.df, names, hlineintercept=5))
-print(plot_samplewise(values.df, names, hlineintercept=c("cutoff"=5)))
-print(plot_samplewise(values.df, names, hlineintercept=c("cutoff"=5)))
-print(plot_samplewise(values.df, names, connectinglines=TRUE))
-print(plot_samplewise(values.df, names, returnADS=TRUE))
+print(plot_samplewise(values.df, names, sorting.dfindex = 3))
+print(plot_samplewise(values.df, names, hlineintercept = 5))
+print(plot_samplewise(values.df, names, hlineintercept = c("cutoff" = 5)))
+print(plot_samplewise(values.df, names, hlineintercept = c("cutoff" = 5)))
+print(plot_samplewise(values.df, names, connectinglines = TRUE))
+print(plot_samplewise(values.df, names, returnADS = TRUE))
 }

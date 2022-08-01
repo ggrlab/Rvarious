@@ -17,8 +17,10 @@ Print a 2d matrix python-like
 }
 \examples{
 print_as_python(
-	matrix(c(-1.2067,  0.6976,
-			 0.1576,  0.6925,
-			 1.0208, -0.6271), ncol=2, byrow=TRUE)
-	)
+    matrix(c(
+        -1.2067, 0.6976,
+        0.1576, 0.6925,
+        1.0208, -0.6271
+    ), ncol = 2, byrow = TRUE)
+)
 }

@@ -15,7 +15,8 @@
 #' @export
 #'
 write_fcs <- function(cell_matrix, filepath, max_val = 1e7, min_val = -1e3) {
-    cell_matrix <- rbind(cell_matrix, max_val, min_val)
+    cell_matrix <- rbind(cell_matrix, max_val)
+    cell_matrix <- rbind(cell_matrix, min_val)
     ff <- flowCore::flowFrame(cell_matrix)
     ff <- ff[-nrow(ff), ]
     ff <- ff[-nrow(ff), ]

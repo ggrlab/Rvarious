@@ -21,49 +21,49 @@ Get a unified prediction function
 \examples{
 # library(Rvarious)
 set.seed(1010)
-n=1000;p=100
-nzc=trunc(p/10)
-x=matrix(rnorm(n*p),n,p)
+n <- 1000
+p <- 100
+nzc <- trunc(p / 10)
+x <- matrix(rnorm(n * p), n, p)
 rownames(x) <- paste0("S", 1:nrow(x))
 colnames(x) <- paste0("f", 1:ncol(x))
-beta=rnorm(nzc)
-fx= x[,seq(nzc)] \%*\% beta
-eps=rnorm(n)*5
-y=drop(fx+eps)
-px=exp(fx)
-px=px/(1+px)
-ly=rbinom(n=length(px),prob=px,size=1)
+beta <- rnorm(nzc)
+fx <- x[, seq(nzc)] \%*\% beta
+eps <- rnorm(n) * 5
+y <- drop(fx + eps)
+px <- exp(fx)
+px <- px / (1 + px)
+ly <- rbinom(n = length(px), prob = px, size = 1)
 
-if(require(glmnet)){
-		set.seed(1011)
-		cvob1=glmnet::cv.glmnet(x,y)
+if (require(glmnet)) {
+    set.seed(1011)
+    cvob1 <- glmnet::cv.glmnet(x, y)
 
-		print(head(predict_unified(cvob1,newx = x,  s="lambda.min")))
-		print(head(predict_unified(cvob1,newx = x)))
-	}
-if(require(zeroSum)){
-	cvob2=zeroSum::zeroSum(x,y)
+    print(head(predict_unified(cvob1, newx = x, s = "lambda.min")))
+    print(head(predict_unified(cvob1, newx = x)))
+}
+if (require(zeroSum)) {
+    cvob2 <- zeroSum::zeroSum(x, y)
 
-		print(head(predict_unified(cvob2,newx = x,  s="lambda.min")))
-	}
-
-if(require(grpreg)){
-		cvob3 = grpreg::cv.grpreg(x,y)
-		cvob4 = grpreg::grpreg(x,y)
-
-		print(head(predict_unified(cvob3,newx = x,  s="lambda.min")))
-		print(head(predict_unified(cvob4,newx = x,  lambda.index=2)))
-
-		Lung <- grpreg::Lung
-		x_surv <- Lung$X
-		y_surv <- Lung$y
-		group <- Lung$group
-
-		cvob5 <- grpreg::cv.grpsurv(x_surv, y_surv, group)
-		cvob6 <- grpreg::grpsurv(x_surv, y_surv, group)
-		print(head(predict_unified(cvob5,newx = x_surv,  s="lambda.min")))
-		print(head(predict_unified(cvob6,newx = x_surv,  lambda.index=4)))
+    print(head(predict_unified(cvob2, newx = x, s = "lambda.min")))
 }
 
+if (require(grpreg)) {
+    cvob3 <- grpreg::cv.grpreg(x, y)
+    cvob4 <- grpreg::grpreg(x, y)
+
+    print(head(predict_unified(cvob3, newx = x, s = "lambda.min")))
+    print(head(predict_unified(cvob4, newx = x, lambda.index = 2)))
+
+    Lung <- grpreg::Lung
+    x_surv <- Lung$X
+    y_surv <- Lung$y
+    group <- Lung$group
+
+    cvob5 <- grpreg::cv.grpsurv(x_surv, y_surv, group)
+    cvob6 <- grpreg::grpsurv(x_surv, y_surv, group)
+    print(head(predict_unified(cvob5, newx = x_surv, s = "lambda.min")))
+    print(head(predict_unified(cvob6, newx = x_surv, lambda.index = 4)))
+}
 
 }

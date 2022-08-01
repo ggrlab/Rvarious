@@ -59,21 +59,22 @@ print(unlist_get_element(a_different_depths, "cutoff", simplify = FALSE))
 
 # one element is a 1-col matrix
 a_different_depths <- a_small
-a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, ncol=1)
+a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, ncol = 1)
 a_different_depths$train.res...p$CVstep2$cutoff <- NULL
 print(unlist_get_element(a_different_depths, "cutoff"))
 
 # one element is a 1-row matrix # error
 a_different_depths <- a_small
-a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, nrow=1)
+a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, nrow = 1)
 a_different_depths$train.res...p$CVstep2$cutoff <- NULL
 print(unlist_get_element(a_different_depths, "cutoff"))
 
 
 # one element is a 1-row matrix # error
 a_different_depths <- a_small
-a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, ncol=1)
+a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff <- matrix(1:4, ncol = 1)
 rownames(a_different_depths$train.res...p$CVstep2$asdflkjh$cutoff) <- letters[1:4]
 a_different_depths$train.res...p$CVstep2$cutoff <- NULL
 print(unlist_get_element(a_different_depths, "cutoff"))
+
 }
