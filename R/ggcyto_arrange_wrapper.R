@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-#' ggcyto_arrange_wrapper(ggcyto.plotlist = combinationXX_plots, facet.coloring.vec = as.character(pData(tmp.panel)$Hepatitis))
+#' # ggcyto_arrange_wrapper(ggcyto.plotlist = combinationXX_plots, facet.coloring.vec = as.character(Biobase::pData(tmp.panel)$Hepatitis))
 #'
 ggcyto_arrange_wrapper <- function(ggcyto.plotlist, facet.coloring.vec, do.sort = TRUE,
                                    max.columns = 10, facet.coloring.title = "NoTitle",

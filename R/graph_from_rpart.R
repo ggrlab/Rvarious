@@ -21,6 +21,7 @@
 #' @export
 #'
 #' @examples
+#' library(rpart)
 #' fit <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis)
 #' graph_from_rpart(fit)
 #'

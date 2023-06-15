@@ -22,7 +22,7 @@
 #' })
 #' ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", "a")))
 #' ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", NA)))
-#' ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c(1, 6, 1)))
+#' # ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c(1, 6, 1)))
 ggcyto_facet_color_bg <- function(ggcyto.plotlist,
                                   bg.values,
                                   numeric.color.palette = colorRampPalette(c("blue", "red")),

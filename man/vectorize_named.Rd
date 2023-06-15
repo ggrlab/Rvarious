@@ -24,6 +24,6 @@ vectorize_named(mymat)
 
 mymat <- matrix(1:6, nrow = 3)
 # This here should fail because there is more than 1 column in the matrix mymat!
-vectorize_named(mymat)
+# vectorize_named(mymat)
 
 }

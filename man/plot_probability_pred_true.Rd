@@ -20,9 +20,6 @@ plot_probability_pred_true(
 \arguments{
 \item{blackwhite}{}
 }
-\value{
-
-}
 \description{
 Title
 }

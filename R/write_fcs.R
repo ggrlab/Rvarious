@@ -15,6 +15,7 @@
 #' @export
 #'
 write_fcs <- function(cell_matrix, filepath, max_val = 1e7, min_val = -1e3) {
+    stop("Deprecated")
     cell_matrix <- rbind(cell_matrix, max_val)
     cell_matrix <- rbind(cell_matrix, min_val)
     ff <- flowCore::flowFrame(cell_matrix)

@@ -24,9 +24,6 @@ the cutoff.}
 
 \item{class_positive}{The true class values}
 }
-\value{
-
-}
 \description{
 Get performance measures for binary classification problems
 }

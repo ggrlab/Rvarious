@@ -38,9 +38,6 @@ plot_samplewise(
 
 \item{returnADS}{Return the absolute distance sum between all points for one column, summed up over all columns.}
 }
-\value{
-
-}
 \description{
 Plot multiple (1+) values for the same names
 }

@@ -36,5 +36,5 @@ p.list <- flowCore::fsApply(fs, function(x) {
 })
 ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", "a")))
 ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c("a", "b", NA)))
-ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c(1, 6, 1)))
+# ggpubr::ggarrange(plotlist = ggcyto_facet_color_bg(p.list, c(1, 6, 1)))
 }

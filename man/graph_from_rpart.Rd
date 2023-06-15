@@ -23,6 +23,7 @@ As a starting point for visualization, this function generates
 "from" and "to" indices.
 }
 \examples{
+library(rpart)
 fit <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis)
 graph_from_rpart(fit)
 

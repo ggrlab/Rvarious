@@ -78,9 +78,10 @@ predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
             axis.text.y = ggplot2::element_blank(),
             axis.ticks.y = ggplot2::element_blank()
         ) +
-        xlab(""))
+        ggplot2::xlab(""))
 }
 
+#' @export
 multiclass_probability_simulation <- function(n_classes) {
     probabilities <- numeric(n_classes)
     shuffled_indices <- sample(length(probabilities))

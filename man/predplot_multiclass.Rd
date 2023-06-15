@@ -13,9 +13,6 @@ predplot_multiclass(pred_matrix, true_values, sort_by_true = TRUE)
 
 \item{sort_by_true}{If TRUE, then the rows are sorted by the true values.}
 }
-\value{
-
-}
 \description{
 Prediction matrix of a multiclass problem
 }
