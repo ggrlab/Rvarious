@@ -56,18 +56,18 @@
 #'     beta.latent.T <- c(5, 5, 5, 0, 0, 0, 0, 0, 5, 5, 0) # true latent coefficients.
 #'     # beta.T <- c(5, 5, 10, 0, 5, 0), true variables: 1, 2, 3, 5; true groups: 1, 4.
 #'     X <- matrix(rnorm(n = 6 * 100), ncol = 6)
-#'     # 2023-06-15: grpregOverlap::expandX seems to fail with this, whyever this is happening. NOT fixing right now. 
-#'     #X.latent <- expandX(X, group)
-#'     #y <- X.latent %*% beta.latent.T + rnorm(100)
-#' 
-#'     #cvfit <- cv.grpregOverlap(X, y, group, penalty = "grMCP")
-#'     #cv.lambdaIndex(
+#'     # 2023-06-15: grpregOverlap::expandX seems to fail with this, whyever this is happening. NOT fixing right now.
+#'     # X.latent <- expandX(X, group)
+#'     # y <- X.latent %*% beta.latent.T + rnorm(100)
+#'
+#'     # cvfit <- cv.grpregOverlap(X, y, group, penalty = "grMCP")
+#'     # cv.lambdaIndex(
 #'     #    fit = cvfit,
 #'     #    s = "lambda.min",
 #'     #    fit.lambda.name = "lambda",
 #'     #    fit.lambda.error.name = "cve",
 #'     #    fit.lambda.errorSD.name = "cvse"
-#'     #)
+#'     # )
 #' }
 cv.lambdaIndex <- function(fit, s,
                            fit.lambda.name = "lambdas",
