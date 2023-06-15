@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ggrlab/Rvarious/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ggrlab/Rvarious/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # Howto install: 
 # 0. Install devtools
 install.packages("devtools")
