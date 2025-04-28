@@ -11,7 +11,6 @@
 #' @param sort_by_true
 #' If TRUE, then the rows are sorted by the true values.
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -45,7 +44,11 @@
 predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
     # The idea is based on the code from plot_prob_multiclass in the CCC package
     possible_colors <- Rvarious::gg_color_hue(length(colnames(pred_matrix)))
-    names(possible_colors) <- sort(colnames(pred_matrix))
+    if(is.factor(true_values)) {
+        names(possible_colors) <- levels(true_values)
+    }else{
+        names(possible_colors) <- sort(colnames(pred_matrix))
+    }
 
     pred_matrix_color <- matrix(possible_colors, nrow = nrow(pred_matrix), ncol = ncol(pred_matrix), byrow = TRUE)
 
@@ -64,14 +67,26 @@ predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
     )
     true_col <- possible_colors[vapply(true_values, function(x) which(colnames(pred_matrix) == x), numeric(1))]
 
-    true_pred_matrix_color_alphaed <- cbind(true_col, max_pred_col, pred_matrix_color_alphaed)
+    prob_mat <- pred_matrix
+    colnames(prob_mat) <- paste0("p.", colnames(prob_mat))
+    true_pred_matrix_color_alphaed <- cbind(true_col, max_pred_col, pred_matrix_color_alphaed) |>
+        tibble::as_tibble() |>
+        cbind(prob_mat) |>
+        tibble::as_tibble() |>
+        dplyr::mutate(
+            p.max_pred_col  = apply(prob_mat, 1, max)
+        ) 
 
+    # tmp <- true_pred_matrix_color_alphaed
     if (sort_by_true) {
-        true_pred_matrix_color_alphaed <- true_pred_matrix_color_alphaed[order(true_values, decreasing = TRUE), ]
+        true_pred_matrix_color_alphaed <- true_pred_matrix_color_alphaed |>
+            dplyr::arrange(
+                true_col, p.max_pred_col
+            )
     }
 
     rownames(true_pred_matrix_color_alphaed) <- paste0("S_", 1:nrow(true_pred_matrix_color_alphaed))
-    melted.df <- reshape2::melt(true_pred_matrix_color_alphaed)
+    melted.df <- reshape2::melt(as.matrix(true_pred_matrix_color_alphaed[, 1:(ncol(pred_matrix) +2)]))
     return(ggplot2::ggplot(melted.df, ggplot2::aes(Var2, Var1)) +
         ggplot2::geom_raster(ggplot2::aes(fill = value)) +
         ggplot2::scale_fill_identity() +

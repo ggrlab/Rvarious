@@ -17,9 +17,6 @@ plot_probability_pred_true(
   measures = c("AUC", "ACC", "SPEC", "SENS")
 )
 }
-\arguments{
-\item{blackwhite}{}
-}
 \description{
 Title
 }

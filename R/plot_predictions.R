@@ -21,7 +21,6 @@
 #' A dataframe with AUC, accuracy, sensitivity, specificity and the used cutoff.
 #' @export
 #'
-#' @examples
 plot_predictions <- function(predictions, trues, names, truenames = c("1" = "infected", "0" = "non.infected"),
                              maintitle = "", cutoff = .5, probabilities = TRUE) {
     tmp.res <- data.frame(

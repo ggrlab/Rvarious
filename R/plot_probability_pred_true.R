@@ -1,17 +1,6 @@
 
 #' Title
 #'
-#' @param predictions
-#' @param trues
-#' @param names
-#' @param truenames
-#' @param maintitle
-#' @param cutoff
-#' @param probabilities
-#' @param sampletype
-#' @param blackwhite
-#'
-#' @return
 #' @export
 #'
 #' @examples

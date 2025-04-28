@@ -13,7 +13,6 @@
 #' @param returnADS
 #'    Return the absolute distance sum between all points for one column, summed up over all columns.
 #'
-#' @return
 #' @export
 #'
 #' @examples

@@ -30,49 +30,50 @@ Get coefficients without zeros
 \examples{
 # library(Rvarious)
 set.seed(1010)
-n=1000;p=100
-nzc=trunc(p/10)
-x=matrix(rnorm(n*p),n,p)
-beta=rnorm(nzc)
-fx= x[,seq(nzc)] \%*\% beta
-eps=rnorm(n)*5
-y=drop(fx+eps)
-px=exp(fx)
-px=px/(1+px)
-ly=rbinom(n=length(px),prob=px,size=1)
+n <- 1000
+p <- 100
+nzc <- trunc(p / 10)
+x <- matrix(rnorm(n * p), n, p)
+beta <- rnorm(nzc)
+fx <- x[, seq(nzc)] \%*\% beta
+eps <- rnorm(n) * 5
+y <- drop(fx + eps)
+px <- exp(fx)
+px <- px / (1 + px)
+ly <- rbinom(n = length(px), prob = px, size = 1)
 
-if(require(glmnet)){
-		set.seed(1011)
-		cvob1=glmnet::cv.glmnet(x,y)
+if (require(glmnet)) {
+    set.seed(1011)
+    cvob1 <- glmnet::cv.glmnet(x, y)
 
-		print(coef_no_zero(cvob1))
-		print(coef_no_zero(cvob1, do.sort=TRUE))
-		print(coef_no_zero(cvob1, do.sort=FALSE))
-		print(coef_no_zero(cvob1, s="lambda.min"))
-	}
-if(require(zeroSum)){
-	cvob2=zeroSum::zeroSum(x,y)
+    print(coef_no_zero(cvob1))
+    print(coef_no_zero(cvob1, do.sort = TRUE))
+    print(coef_no_zero(cvob1, do.sort = FALSE))
+    print(coef_no_zero(cvob1, s = "lambda.min"))
+}
+if (require(zeroSum)) {
+    cvob2 <- zeroSum::zeroSum(x, y)
 
-		print(coef_no_zero(cvob2))
-		print(coef_no_zero(cvob2, s="lambda.min"))
-	}
+    print(coef_no_zero(cvob2))
+    print(coef_no_zero(cvob2, s = "lambda.min"))
+}
 
-if(require(grpreg)){
-		cvob3 = grpreg::cv.grpreg(x,y)
-		cvob4 = grpreg::grpreg(x,y)
-		Lung <- grpreg::Lung
-		X <- Lung$X
-		y <- Lung$y
-		group <- Lung$group
+if (require(grpreg)) {
+    cvob3 <- grpreg::cv.grpreg(x, y)
+    cvob4 <- grpreg::grpreg(x, y)
+    Lung <- grpreg::Lung
+    X <- Lung$X
+    y <- Lung$y
+    group <- Lung$group
 
-		cvob5 <- grpreg::cv.grpsurv(X, y, group)
+    cvob5 <- grpreg::cv.grpsurv(X, y, group)
 
-		print(coef_no_zero(cvob3))
-		print(coef_no_zero(cvob3, s="lambda.min"))
-		print(coef_no_zero(cvob4))
-		print(coef_no_zero(cvob4, s="lambda.1se"))
-		print(coef_no_zero(cvob5))
-		print(coef_no_zero(cvob5, s="lambda.1se"))
-		print(coef_no_zero(cvob5, s="lambda.min"))
+    print(coef_no_zero(cvob3))
+    print(coef_no_zero(cvob3, s = "lambda.min"))
+    print(coef_no_zero(cvob4))
+    print(coef_no_zero(cvob4, s = "lambda.1se"))
+    print(coef_no_zero(cvob5))
+    print(coef_no_zero(cvob5, s = "lambda.1se"))
+    print(coef_no_zero(cvob5, s = "lambda.min"))
 }
 }

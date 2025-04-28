@@ -16,7 +16,6 @@
 #' @param cutoff
 #'   The cutoff where you want the "measures" from.
 #'
-#' @return
 #' @export
 #'
 #' @examples
