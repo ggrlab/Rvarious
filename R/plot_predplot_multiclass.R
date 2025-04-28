@@ -44,21 +44,18 @@
 predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
     # The idea is based on the code from plot_prob_multiclass in the CCC package
     possible_colors <- Rvarious::gg_color_hue(length(colnames(pred_matrix)))
-    if(is.factor(true_values)) {
+    if (is.factor(true_values)) {
         names(possible_colors) <- levels(true_values)
-    }else{
+    } else {
         names(possible_colors) <- sort(colnames(pred_matrix))
     }
 
     pred_matrix_color <- matrix(possible_colors, nrow = nrow(pred_matrix), ncol = ncol(pred_matrix), byrow = TRUE)
+    colnames(pred_matrix_color) <- colnames(pred_matrix)
 
     pred_matrix_color_alphaed <- scales::alpha(pred_matrix_color, pred_matrix)
     dim(pred_matrix_color_alphaed) <- dim(pred_matrix)
-    colnames(pred_matrix_color_alphaed) <- names(possible_colors)
-
-    if (is.factor(true_values)) {
-        pred_matrix_color_alphaed <- pred_matrix_color_alphaed[, levels(true_values)]
-    }
+    colnames(pred_matrix_color_alphaed) <- colnames(pred_matrix)
 
 
     max_pred_col <- scales::alpha(
@@ -66,28 +63,30 @@ predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
         apply(pred_matrix, 1, max)
     )
     true_col <- possible_colors[vapply(true_values, function(x) which(colnames(pred_matrix) == x), numeric(1))]
+    if (is.factor(true_values)) {
+        pred_matrix_color_alphaed <- pred_matrix_color_alphaed[, levels(true_values)]
+        true_col <- factor(true_col, levels = pred_matrix_color[1, levels(true_values)])
+    }
+
 
     prob_mat <- pred_matrix
     colnames(prob_mat) <- paste0("p.", colnames(prob_mat))
-    true_pred_matrix_color_alphaed <- cbind(true_col, max_pred_col, pred_matrix_color_alphaed) |>
-        tibble::as_tibble() |>
+    true_pred_matrix_color_alphaed <- data.frame(true_col, max_pred_col, pred_matrix_color_alphaed) |>
         cbind(prob_mat) |>
-        tibble::as_tibble() |>
         dplyr::mutate(
-            p.max_pred_col  = apply(prob_mat, 1, max)
-        ) 
+            p.max_pred_col = apply(prob_mat, 1, max)
+        )
 
-    # tmp <- true_pred_matrix_color_alphaed
     if (sort_by_true) {
         true_pred_matrix_color_alphaed <- true_pred_matrix_color_alphaed |>
             dplyr::arrange(
-                true_col, p.max_pred_col
+                dplyr::desc(true_col), p.max_pred_col
             )
     }
 
     rownames(true_pred_matrix_color_alphaed) <- paste0("S_", 1:nrow(true_pred_matrix_color_alphaed))
-    melted.df <- reshape2::melt(as.matrix(true_pred_matrix_color_alphaed[, 1:(ncol(pred_matrix) +2)]))
-    return(ggplot2::ggplot(melted.df, ggplot2::aes(Var2, Var1)) +
+    melted.df <- reshape2::melt(as.matrix(true_pred_matrix_color_alphaed[, 1:(ncol(pred_matrix) + 2)]))
+    p0 <- ggplot2::ggplot(melted.df, ggplot2::aes(Var2, Var1)) +
         ggplot2::geom_raster(ggplot2::aes(fill = value)) +
         ggplot2::scale_fill_identity() +
         ggplot2::theme(
@@ -96,7 +95,8 @@ predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
             axis.text.y = ggplot2::element_blank(),
             axis.ticks.y = ggplot2::element_blank()
         ) +
-        ggplot2::xlab(""))
+        ggplot2::xlab("")
+    return(p0)
 }
 
 #' @export
