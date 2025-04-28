@@ -1,6 +1,6 @@
 Package: Rvarious
 Title: Various R functions gathered
-Version: 0.1.18.9
+Version: 0.1.18.10
 Authors@R: 
     person("Gunther", "Glehr", , "gunthergl@gmx.net", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1495-9162"))
@@ -27,10 +27,12 @@ Suggests:
     glmnet,
     grpregOverlap,
     knitr,
-    rmarkdown, 
+    rmarkdown,
     flowCore,
     grpreg,
     yaml,
-    zeroSum
+    zeroSum,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 RoxygenNote: 7.2.3
+Config/testthat/edition: 3

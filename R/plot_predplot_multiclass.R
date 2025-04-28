@@ -43,7 +43,6 @@
 #' dev.off()
 #'
 predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
-
     # The idea is based on the code from plot_prob_multiclass in the CCC package
     possible_colors <- Rvarious::gg_color_hue(length(colnames(pred_matrix)))
     names(possible_colors) <- sort(colnames(pred_matrix))
@@ -53,6 +52,10 @@ predplot_multiclass <- function(pred_matrix, true_values, sort_by_true = TRUE) {
     pred_matrix_color_alphaed <- scales::alpha(pred_matrix_color, pred_matrix)
     dim(pred_matrix_color_alphaed) <- dim(pred_matrix)
     colnames(pred_matrix_color_alphaed) <- names(possible_colors)
+
+    if (is.factor(true_values)) {
+        pred_matrix_color_alphaed <- pred_matrix_color_alphaed[, levels(true_values)]
+    }
 
 
     max_pred_col <- scales::alpha(
